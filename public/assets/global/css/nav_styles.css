@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400');
+
+.navbar-default .navbar-nav>li>a {
+  color: white;
+}
+
+#navbar1 .navbar-nav>li>a {
+  color: #000;
+}
+
+.badge.badge-default {
+    background-color: #f36a5a !important;
+    color: #fff !important;
+    /*right: -5px;*/
+    margin: -19px -10px 0px;
+}

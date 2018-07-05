@@ -1,0 +1,2603 @@
+
+{{>footer_modals}}
+<!-- BEGIN FOOTER -->
+    <!--<div class="page-footer">
+        <div class="page-footer-inner"> 2017 &copy; domiit
+
+        </div>
+        <div class="scroll-to-top">
+            <i class="icon-arrow-up"></i>
+        </div>
+    </div>-->
+
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted">2017 &copy; domiit</p>
+        <div class="scroll-to-top">
+            <i class="icon-arrow-up"></i>
+        </div>
+      </div>
+    </footer>
+    <!-- END FOOTER -->
+
+<!-- BEGIN CORE PLUGINS -->
+        <script src="{{url}}/assets/global/plugins/jquery12.min.js" type="text/javascript"></script>
+        <script src="{{url}}/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/goodshare.js@4/goodshare.min.js"></script>
+        
+        <script src="{{url}}/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+        <script src="{{url}}/assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+        <script src="{{url}}/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+        <script src="{{url}}/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+        <script src="{{url}}/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+        <!-- END CORE PLUGINS -->
+        <!-- BEGIN PAGE LEVEL PLUGINS -->
+
+        <script src="{{url}}/assets/global/plugins/bootstrap-modal/js/bootstrap-modalmanager.js" type="text/javascript"></script>
+        <script src="{{url}}/assets/global/plugins/bootstrap-modal/js/bootstrap-modal.js" type="text/javascript"></script>
+
+        <!--<script src="{{url}}/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>-->
+
+        <script src="{{url}}/assets/global/plugins/morris/morris.min.js" type="text/javascript"></script>
+        <script src="{{url}}/assets/global/plugins/morris/raphael-min.js" type="text/javascript"></script>
+        <script src="{{url}}/assets/global/plugins/counterup/jquery.waypoints.min.js" type="text/javascript"></script>
+        <script src="{{url}}/assets/global/plugins/counterup/jquery.counterup.min.js" type="text/javascript"></script>
+        
+        <!--<script src="{{url}}/assets/global/plugins/flot/jquery.flot.min.js" type="text/javascript"></script>
+        <script src="{{url}}/assets/global/plugins/flot/jquery.flot.resize.min.js" type="text/javascript"></script>
+        <script src="{{url}}/assets/global/plugins/flot/jquery.flot.categories.min.js" type="text/javascript"></script>
+        
+        <script src="{{url}}/assets/global/plugins/jquery.sparkline.min.js" type="text/javascript"></script> -->
+
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="{{url}}/js/ie10-viewport-bug-workaround.js"></script>
+
+        <!-- END PAGE LEVEL PLUGINS -->
+        <!-- BEGIN THEME GLOBAL SCRIPTS -->
+        <script src="{{url}}/assets/global/scripts/app.min.js" type="text/javascript"></script>
+        <!--<script src="{{url}}/assets/pages/scripts/components-date-time-pickers.min.js" type="text/javascript"></script>-->
+        <!-- END THEME GLOBAL SCRIPTS -->
+        <!-- BEGIN PAGE LEVEL SCRIPTS -->
+        <script src="{{url}}/assets/pages/scripts/dashboard.min.js" type="text/javascript"></script>
+        <!-- END PAGE LEVEL SCRIPTS -->
+        <!-- BEGIN THEME LAYOUT SCRIPTS -->
+        <script src="{{url}}/assets/layouts/layout/scripts/layout.min.js" type="text/javascript"></script>
+        <script src="{{url}}/assets/layouts/layout/scripts/demo.min.js" type="text/javascript"></script>
+        <script src="{{url}}/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
+        <script src="{{url}}/js/js_handler.js" type="text/javascript"></script>
+        <!-- END THEME LAYOUT SCRIPTS -->        
+
+        <!--CATEGORY SUBMISSION-->
+        <script src="{{url}}/js/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+        <script src="{{url}}/js/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>        
+        <script src="{{url}}/js/jquery.form.min.js" type="text/javascript"></script>
+        <script src="{{url}}/js/moment.js" type="text/javascript"></script>
+        <script src="{{url}}/js/socket.io.js" type="text/javascript"></script>
+        <script src="{{url}}/js/sockets_fetcher.js" type="text/javascript"></script>
+
+        <script src="{{url}}/assets/summernote/summernote.js" type="text/javascript"></script>
+
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/mode/xml/xml.min.js"></script>
+
+      <!-- Bootstrap Date-Picker Plugin -->
+
+      <!-- Bootstrap Date-Picker Plugin -->
+      <script type="text/javascript">
+        var socket = io.connect('http://' + location.host);
+    </script>
+
+        <script type="text/javascript">
+
+            $(document).ready(function(){
+
+            $('.summer_details').summernote({
+                    tabsize: 2,
+                    height: 100,
+                    toolbar: [
+                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                    ['font', ['strikethrough', 'superscript', 'subscript']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['height', ['height']]
+                  ]
+                });
+
+          var date_input=$('input[name="profile_bio1_dob"]'); 
+          var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+          //var container="body";
+          var options={
+            format: 'mm/dd/yyyy',
+            container: container,
+            todayHighlight: true,
+            autoclose: true,
+          };
+          date_input.datepicker(options);
+
+
+            /*on category select, fetch sub_cat1s for that category*/
+                $("body").on('change','#request_category',function(e){
+                //get the sub-category 1 for this item
+                var category=$(this).val();
+                var section=$('#request_type').val();                
+                fetchItemList(category,section,"{{url}}/fetchSubCats1",'#request_sub1');
+            });
+
+            /*on cat1 select, fetch sub_cat2s for that cat1*/
+            $("body").on('change','#request_sub1',function(e){
+                
+                var cat1=$(this).val();
+                var section=$('#request_type').val();
+
+                //reset other fields
+                $('#request_sub2').html('');
+
+                //send request
+                var url="{{url}}/fetchSubCats2";
+                fetchItemList(cat1,section,url,'#request_sub2');
+
+            });
+
+            /*on radio select, fetch users for that selection*/
+            $("body").on('change','.request_from',function(e){
+                
+                var level=$(this).val();
+                var section=$('#request_type').val();
+
+                //reset other fields
+                $('#request_users').html('');
+
+                //send request
+                var url="{{url}}/fetchUsers";
+                fetchItemList(level,section,url,'#request_users');
+            });
+
+            /*on radio select, fetch users for that selection*/
+            $("body").on('change','.new_request_from',function(e){
+                
+                var level=$(this).val();
+                var section=$('#new_request_type').val();
+
+                //reset other fields
+                $('#new_request_users').html('');
+
+                //send request
+                var url="{{url}}/fetchUsers";
+                fetchItemList(level,section,url,'#new_request_users');
+            });
+
+            /*on radio select, fetch users for that selection*/
+            $("body").on('change','.request_update_from',function(e){
+                
+                var level=$(this).val();
+                var section=$('#request_update_type').val();
+
+                //reset other fields
+                $('#request_update_users').html('');
+
+                //send request
+                var url="{{url}}/fetchUsers";
+                fetchItemList(level,section,url,'#request_update_users');
+            });
+
+
+            //send friend request
+                $("body").on('click','.send_friend_req',function(e){
+                //get this posts owner
+                var $this=$(this);
+                var parent=$this.parents('.posted');
+                var owner_id=parent.find('input#post_owner_id').val();
+                console.log('owner_id '+typeof(owner_id));
+                //send request
+                var url="{{url}}/sendFriendRequest";
+                console.log(url);
+
+                $.ajax({
+                    url:url,
+                    type:'GET',
+                    data:{'owner_id':owner_id},
+                    headers: {'X-My-App-Token': 'loganstyles'},
+                    success:function(response){
+                        console.log(response);
+                        
+                        if(response.success==true){
+                            $this.replaceWith('<span class="post_box_name">'+response.msg+'</span>');
+                            location.reload();                 
+
+                        }else{ 
+                            $this.replaceWith('<span class="friend_req_failed">'+response.msg+'</span>'); }
+                        },
+                        error:function(xhr, status, err){
+                            console.log('error');
+                            console.log(xhr);
+                            console.log(status);
+                            console.log(err);
+                        }
+                    });
+
+            });
+
+
+            //post suggestions
+          $("body").on('click','.post_suggestion',function(e){
+                var parent=$(this).parents('.posted_suggestion');
+                var group_id=parent.find('input#post_group_id').val();
+
+              $('#suggestion_modal').modal({backdrop: false, keyboard: false});
+              $('#suggestion_modal #suggestion_group_id').val(group_id);
+          });
+
+          //add member to group modal
+          $("body").on('click','.show_add_member',function(e){
+                var parent=$(this).parents('.posted');
+                var group_id=parent.find('input#post_groupid').val();
+
+              $('#add_member_modal').modal({backdrop: false, keyboard: false});
+              $('#add_member_modal #add_group_id').val(group_id);
+          });
+
+
+          /*add member to group*/
+                $("body").on('submit','#add_member_form',function(e){
+                    e.preventDefault();
+
+                    var sub_button=$(this).find(':submit');
+                    var old_button_val=sub_button.val();
+                    sub_button.prop('disabled', true);
+                    sub_button.val('...processing');
+
+                    resetFields();
+                    var my_url="{{url}}/addMember";
+                    //console.log('url: '+my_url);
+                    
+                    var form_data=$(this).serialize();
+                    //console.log(form_data);
+
+                    $.ajax({
+                        url:my_url,
+                        type:'POST',
+                        data:form_data,
+                        headers: {'X-My-App-Token': 'loganstyles'},
+                        success:function(response){
+                            //console.log(response);
+                            if(response.success==true){
+                            $('#add_member_form  .form_submission_success').text(response.msg);
+                            setTimeout(function(){
+                                $('#add_member_form  .form_submission_success').text('');
+                                sub_button.val(old_button_val);
+                                sub_button.prop('disabled', false);
+                                $('#add_member_modal').modal('hide');
+                                    location.reload();//temp:later use sockets to update the actual post
+                                },3000);
+
+                        }else{
+                            console.log('response is false');
+                            $('#add_member_form  .form_submission_error').text(response.msg);
+                            sub_button.val(old_button_val);
+                            sub_button.prop('disabled', false);
+                        }
+
+
+                        },
+                        error:function(xhr, status, err){
+                            /*console.log('error');
+                            console.log(xhr);
+                            console.log(status);
+                            console.log(err);*/
+                        }
+                    });
+
+                });
+
+
+            //bookmarks an item
+            //save posts
+           $("body").on('click','.bookmark_section_item',function(){
+            //get this posts data
+            var parent=$(this).parents('.posted');
+            var id=parent.find('input#post_id').val();
+            var section=parent.find('input#post_type').val();
+
+            var url='{{url}}/saveItem';
+            console.log('url '+url);
+
+            $.ajax({
+                url:url,
+                type:'POST',
+                data:{'post_id':id,'section':section},
+                headers: {'X-My-App-Token': 'loganstyles'},
+                success:function(response){
+                    console.log(response);
+                    if(response.success==true){
+                        //display notif
+                        alert(response.msg);
+                        location.reload();
+                    }else{
+
+                         }                        
+
+                },
+                error:function(xhr, status, err){
+                    console.log('error');
+                    console.log(xhr);
+                    console.log(status);
+                    console.log(err);
+                }
+            });
+
+        });
+
+            //convert text to sentence case
+                
+               /* $(".post_item_topic_ed,.post_item_more_info_ed,.post_item_body,#section_response_body,#section_response_body,#synopsis,#about_author").each(function(index,element){
+
+                    var string =$(this).text();
+                    //console.log('initial string '+string)
+                    var string_converted=convertToSentencCase(string);
+                    //console.log('converted string '+string_converted)
+                    $(this).text(string_converted);
+                });*/
+
+            /*show modal for answering a question*/
+
+             /*update social buttons*/
+                $('body').on('click','.post_likes,.post_shares,.post_upvotes,.post_downvotes,.post_attending,.post_not_attending',function(){
+                    var $this=$(this);
+                    var classes=$this.attr('class');
+                    var classname=classes.replace('btn btn-link ','');
+                    var action='';
+                    var selected_ans_id=0;
+                    switch(classname){
+                        case 'post_likes':
+                        action='likes';
+                        break;
+                        case 'post_attending':
+                        action='attending';
+                        break;
+                        case 'post_not_attending':
+                        action='not_attending';
+                        break;
+                        case 'post_shares':
+                        action='shares';
+                        break;
+                        case 'post_upvotes':
+                        console.log('inside upvotes')
+                        action='upvotes';
+                        selected_ans_id=$this.parents('.response_votes').find('#post_response_id').val();
+                        break;
+                        case 'post_downvotes':
+                        action='downvotes';
+                        selected_ans_id=$this.parents('.response_votes').find('#post_response_id').val();
+                        break;
+                    }
+
+
+                    var selected_id=$this.parents('.posted').find('#post_id').val();
+                    var selected_type=$this.parents('.posted').find('#post_type').val();
+
+                    console.log('selected_id '+selected_id);
+                    console.log('selected_type '+selected_type);
+                    console.log('selected_ans_id '+selected_ans_id);
+
+                    if(selected_type=="notice board"){
+                        selected_type="notice_board";
+                    }
+
+                    var my_url="{{url}}/posts/update_meta/"+selected_type+"/"+selected_id+"/"+action+"/"+selected_ans_id;
+                    console.log('my_url '+my_url);
+
+                    $.ajax({
+                        url:my_url,
+                        type:'POST',
+                        headers:{'X-My-App-Token': 'loganstyles'},
+                        success:function(response){
+                            console.log(response);
+                            var old_val=parseInt($this.find('span.social_value').text());
+                            if(response.success==true && response.action=="like"){
+                                //var old_val=parseInt($this.find('span.social_value').text());
+                                $this.find('span.social_value').text(old_val+1);//update the page value manually
+                                $this.find('i.fa').toggleClass('fa-heart-o fa-heart');
+                            }else if(response.success==true && response.action=="unlike"){
+                                //var old_val=parseInt($this.find('span.social_value').text());
+                                $this.find('span.social_value').text(old_val-1);//update the page value manually
+                                $this.find('i.fa').toggleClass('fa-heart fa-heart-o');
+                            }else if(response.success==true && response.action=="votes"){
+                                $this.find('span.social_value').text(old_val+1);//update the page value manually
+                                //$this.find('i.fa').toggleClass('fa-heart fa-heart-o');
+                            }else if(response.success==true && response.action=="unvotes"){
+                                $this.find('span.social_value').text(old_val-1);//update the page value manually
+                                //$this.find('i.fa').toggleClass('fa-heart fa-heart-o');
+                            }else if(response.success==true && response.action=="attending"){
+                                $this.find('span.social_value').text(old_val+1);
+                            }else if(response.success==true && response.action=="unnot_attending"){
+                                $this.find('span.social_value').text(old_val-1);
+                            }
+                        },
+                        error:function(xhr, status, err){
+                            console.log('error');
+                            console.log(xhr);
+                            console.log(status);
+                            console.log(err);
+                        }
+
+                    });
+
+                });
+
+
+                $('body').on('click','.download_button',function(e){
+                    e.preventDefault();
+                    var $this =$(this);
+                    var attachemnt_file=$this.prev('input.download_input_field').val();
+                    console.log('attachment '+attachemnt_file);
+                    var url='{{url}}/members/downloads';
+                    var files={file:attachemnt_file};
+
+                    var old_button_val=$this.text();
+                    $this.prop('disabled', true);
+                    $this.text('...downloading');
+
+                    $.ajax({
+                        url:url,
+                        type:'POST',
+                        data:files,
+                        headers: {'X-My-App-Token': 'loganstyles'},
+                        success:function(response){
+                            console.log(response);
+                            $this.text('...download complete');
+                            if(response.success==true){
+                                alert(response.msg);
+                                setTimeout(function(){
+                                    $this.text(old_button_val);
+                                    $this.prop('disabled', false);
+                                },3000);
+
+                            }else{
+                                console.log('response is false');
+                                alert(response.msg);
+                                setTimeout(function(){
+                                    $this.text(old_button_val);
+                                    $this.prop('disabled', false);
+                                },3000);
+                            }                        
+                            
+                        },
+                        error:function(xhr, status, err){
+                            console.log('error');
+                            console.log(xhr);
+                            console.log(status);
+                            console.log(err);
+                        }
+                    });
+                });
+
+                $('body').on('click','.response_button',function(e){
+
+                    var $this=$(this);
+                    var selected_id=$this.parents('.posted').find('#post_id').val();
+                    var selected_type=$this.parents('.posted').find('#post_type').val();
+                    var selected_item_topic=$this.parents('.posted').find('.post_item_topic').html();
+                    var selected_item_body=$this.parents('.posted').find('.post_item_body').html();
+                    var selected_item_more_info=$this.parents('.posted').find('.post_item_more_info').html();
+
+                    console.log('this '+selected_id);
+                    console.log('selected_type '+selected_type);
+                    console.log('selected_item_topic '+selected_item_topic);
+                    console.log('selected_item_body '+selected_item_body);
+                    console.log('selected_item_more_info '+selected_item_more_info);
+                    $('#section_response_form').trigger('reset');
+
+                    //select response title
+                    var page_response="";
+                        switch(selected_type){
+                        case'question':
+                        page_response='answer';
+                        break;
+
+                        case'article':
+                        page_response='review';
+                        break;
+
+                        case'riddle':
+                        page_response='solution';
+                        break;
+
+                        case'request':
+                        page_response='response';
+                        break;
+                    }
+
+
+                    $('#section_response_id').val(selected_id);
+                    $('#section_response_type').val(selected_type);
+                    if(selected_item_topic)
+                    $('#section_response_topic').html(selected_item_topic.trim());
+                    if(selected_item_body)
+                    $('#section_response_body').html(selected_item_body.trim());
+                    if(selected_item_more_info)
+                    $('#section_response_more_info').html(selected_item_more_info.trim());
+                    $('#section_response_details').focus();
+                    $('#section_response_header').text(page_response);
+                    $('#section_response_modal').modal({backdrop: false, keyboard: false});
+                    
+                });
+          
+
+                $('body').on('change','.sel_cat',function(){/*get sub1s for selected cat*/
+                var selected =$(this).val();
+                var selected_id=$(this).attr('id');
+                console.log(selected_id);
+                var required_id_sub1="#"+selected_id.replace('_category','_sub1');
+                var required_id_sub2="#"+selected_id.replace('_category','_sub2');
+                console.log('required ids')
+                console.log(required_id_sub1);
+                console.log(required_id_sub2);
+
+                /*var required_type=selected_id.replace('_category','');*/
+                var required_type=stripUnderscore(selected_id);
+                console.log(required_id_sub1);
+
+                var my_url="{{url}}/cms/selected_cat/"+required_type+"/"+selected;
+
+                    $.ajax({
+                        url:my_url,
+                        type:'GET',
+                            headers: {'X-My-App-Token': 'loganstyles'},
+                            success:function(response){
+                                console.log(response);
+
+                                $(required_id_sub1).html('');
+                                $.each(response.sub1_data,function(key,value){
+                                    console.log(value.title);
+                                    console.log(value.value);
+                                    $(required_id_sub1).append('<option value="'+value.value+'">'+value.title+'</option>');
+
+                                });
+
+                                $(required_id_sub2).html('');
+                                $.each(response.sub2_data,function(key,value){
+                                    console.log(value.title);
+                                    console.log(value.value);
+                                    $(required_id_sub2).append('<option value="'+value.value+'">'+value.title+'</option>');
+
+                                });
+                            },
+                            error:function(xhr, status, err){
+                                console.log('error');
+                                console.log(xhr);
+                                console.log(status);
+                                console.log(err);
+                            }
+                        });
+
+            });
+
+
+
+
+
+            $('body').on('click','.comment_button',function(e){
+
+                var $this=$(this);
+                var comment_section=$this.parents('.new_comments').find('#new_comment_section').val();
+                var comment_section_id=$this.parents('.new_comments').find('#new_comment_section_id').val();
+                var comment_response_id=$this.parents('.new_comments').find('#new_comment_response_id').val();
+
+                console.log('comment_section '+comment_section);
+                console.log('comment_section_id '+comment_section_id);
+                console.log('comment_response_id '+comment_response_id);
+                
+                $('#comment_section_form').trigger('reset');
+
+                $('#comment_section').val(comment_section);
+                $('#comment_section_id').val(comment_section_id);
+                $('#comment_response_id').val(comment_response_id);
+                
+                $('#comment_section_modal').modal({backdrop: false, keyboard: false});
+                
+            });
+          
+
+                $('body').on('change','.sel_cat',function(){/*get sub1s for selected cat*/
+                var selected =$(this).val();
+                var selected_id=$(this).attr('id');
+                console.log(selected_id);
+                var required_id_sub1="#"+selected_id.replace('_category','_sub1');
+                var required_id_sub2="#"+selected_id.replace('_category','_sub2');
+                console.log('required ids')
+                console.log(required_id_sub1);
+                console.log(required_id_sub2);
+
+                /*var required_type=selected_id.replace('_category','');*/
+                var required_type=stripUnderscore(selected_id);
+                console.log(required_id_sub1);
+
+                var my_url="{{url}}/cms/selected_cat/"+required_type+"/"+selected;
+
+                    $.ajax({
+                        url:my_url,
+                        type:'GET',
+                            headers: {'X-My-App-Token': 'loganstyles'},
+                            success:function(response){
+                                console.log(response);
+
+                                $(required_id_sub1).html('');
+                                $.each(response.sub1_data,function(key,value){
+                                    console.log(value.title);
+                                    console.log(value.value);
+                                    $(required_id_sub1).append('<option value="'+value.value+'">'+value.title+'</option>');
+
+                                });
+
+                                $(required_id_sub2).html('');
+                                $.each(response.sub2_data,function(key,value){
+                                    console.log(value.title);
+                                    console.log(value.value);
+                                    $(required_id_sub2).append('<option value="'+value.value+'">'+value.title+'</option>');
+
+                                });
+                            },
+                            error:function(xhr, status, err){
+                                console.log('error');
+                                console.log(xhr);
+                                console.log(status);
+                                console.log(err);
+                            }
+                        });
+
+            });
+
+            //for delete posts:get id,section & display modal
+                $("body").on('click','.delete_section_item',function(e){
+
+                    var parent=$(this).parents('.posted');
+                    var id=parent.find('input#post_id').val();
+                    var section=parent.find('input#post_type').val();
+                    //console.log('delete id '+id);
+                    //console.log('delete section '+section);
+
+                    //update & show modal
+                    $('#section_delete_modal').modal({backdrop: false, keyboard: false});
+                    $('#section_delete_modal #section_delete_id').val(id);
+                    $('#section_delete_modal #section_delete_type').val(section);
+
+                });
+
+            //for delete posts:get id,section & display modal
+                $("body").on('click','.delete_rowitem',function(e){
+
+                    var curr_id=$('table tr.page_row.active .curr_id').val();
+                    if(curr_id){
+                    // console.log('curr_id '+curr_id);
+                    var curr_type=$('table tr.page_row.active .curr_type').val();
+                    //console.log('curr_type '+curr_type);
+                
+                    //update & show modal
+                    $('#section_delete_modal').modal({backdrop: false, keyboard: false});
+                    $('#section_delete_modal #section_delete_id').val(curr_id);
+                    $('#section_delete_modal #section_delete_type').val(curr_type);
+                    }
+                   
+
+                });
+
+                /*delete a post*/
+                $("body").on('submit','#section_delete_form',function(e){
+                    e.preventDefault();
+
+                    var sub_button=$(this).find(':submit');
+                    var old_button_val=sub_button.val();
+                    sub_button.prop('disabled', true);
+                    sub_button.val('...deleting');
+
+                    resetFields();
+                    var my_url="{{url}}/delete_postitem";
+                    //console.log('url: '+my_url);
+                    
+                    var form_data=$(this).serialize();
+                    //console.log(form_data);
+
+                    $.ajax({
+                        url:my_url,
+                        type:'POST',
+                        data:form_data,
+                        headers: {'X-My-App-Token': 'loganstyles'},
+                        success:function(response){
+                            //console.log(response);
+                            if(response.success==true){
+                            $('#section_delete_form  .form_submission_success').text(response.msg);
+                            setTimeout(function(){
+                                $('#section_delete_form  .form_submission_success').text('');
+                                sub_button.val(old_button_val);
+                                sub_button.prop('disabled', false);
+                                $('#section_delete_modal').modal('hide');
+                                    location.reload();//temp:later use sockets to update the actual post
+                                },3000);
+
+                        }else{
+                            console.log('response is false');
+                            $('#section_delete_form  .form_submission_error').text(response.msg);
+                            sub_button.val(old_button_val);
+                            sub_button.prop('disabled', false);
+                        }
+
+
+                        },
+                        error:function(xhr, status, err){
+                            /*console.log('error');
+                            console.log(xhr);
+                            console.log(status);
+                            console.log(err);*/
+                        }
+                    });
+
+                });
+
+
+        /*post a comment*/
+                $("body").on('submit','#comment_section_form',function(e){
+                    e.preventDefault();
+
+                    var sub_button=$(this).find(':submit');
+                    var old_button_val=sub_button.val();
+                    sub_button.prop('disabled', true);
+                    sub_button.val('...posting');
+
+                    resetFields();
+                    var my_url="{{url}}/comment_item";
+                    console.log('url: '+my_url);
+                    
+                    var form_data=$(this).serialize();
+                    //console.log(form_data);
+
+                    $.ajax({
+                        url:my_url,
+                        type:'POST',
+                        data:form_data,
+                        headers: {'X-My-App-Token': 'loganstyles'},
+                        success:function(response){
+                            //console.log(response);
+                            if(response.success==true){
+                            $('#comment_section_form  .form_submission_success').text(response.msg);
+                            setTimeout(function(){
+                                $('#comment_section_form  .form_submission_success').text('');
+                                sub_button.val(old_button_val);
+                                sub_button.prop('disabled', false);
+                                $('#comment_section_modal').modal('hide');
+                                    location.reload();//temp:later use sockets to update the actual post
+                                },3000);
+
+                        }else{
+                            console.log('response is false');
+                            $('#comment_section_form  .form_submission_error').text(response.msg);
+                            sub_button.val(old_button_val);
+                            sub_button.prop('disabled', false);
+                        }
+
+
+                        },
+                        error:function(xhr, status, err){
+                            /*console.log('error');
+                            console.log(xhr);
+                            console.log(status);
+                            console.log(err);*/
+                        }
+                    });
+
+                });
+
+
+        //edit request posts
+        $("body").on('click','.edit_request_item',function(){
+        //get this posts data
+        var response_type="";
+        var parent=$(this).parents('.posted');
+        var id=parent.find('input#post_id').val();
+        var section = (parent.find('span.bold.post_box_name').text()).trim();
+        console.log('section '+section);
+
+        var post_category=parent.find('.post_category').text();
+        var post_sub_cat1=parent.find('.post_sub_cat1').text();
+        var post_sub_cat2=parent.find('.post_sub_cat2').text();
+
+        $("#request_update_modal #request_update_form").trigger('reset'); 
+
+        var post_item_topic=parent.find('.item-body .post_item_topic').html();
+        var post_item_body=parent.find('.item-body .post_item_body').html();
+        var post_item_more_info=parent.find('.item-body .post_item_more_info').html();
+        console.log('post_item_topic '+post_item_topic)
+        console.log('post_item_body '+post_item_body)
+        console.log('post_item_more_info '+post_item_more_info);
+
+        //append data to modal
+        $('#request_update_modal').modal({backdrop: false, keyboard: false});
+
+        //fetch categories
+        var url='{{url}}/fetchCats';
+        //var url2='{{url}}/fetchSubCats1';
+
+        $.ajax({
+            url:url,
+            type:'GET',
+            data:{'section':section},
+            headers: {'X-My-App-Token': 'loganstyles'},
+            success:function(response){
+                //console.log(response);
+                if(response.success==true){
+                    var res_cats=(response.cats);
+                    var options="";
+                    res_cats.forEach((curr_item,index,array)=>{
+                    if(curr_item.title)
+                        options+='<option value="'+curr_item.title+'">'+curr_item.title+'</option>';
+                    });
+
+                    $('#request_update_modal #request_update_category').html(options);
+
+                    //var category=$('#request_update_modal #request_update_category').val();
+                    //console.log('CATEGORY '+category);
+                    //fetchItemList(category,'request',url2,'#request_update_sub1'); 
+
+                    switch(section){
+                        case 'question':
+                        response_type='Answer';
+                        $('.request_article').hide();
+                        $('.request_question').show();
+                        $('.request_riddle').hide();
+                        break;
+
+                        case 'article':
+                        response_type='Review';
+                        $('.request_article').show();
+                        $('.request_question').hide();
+                        $('.request_riddle').hide();
+                        break;
+
+                        case 'riddle':
+                        response_type='Solution';
+                        $('.request_article').hide();
+                        $('.request_question').hide();
+                        $('.request_riddle').show();
+                        break;
+                    }
+
+                    $('#request_update_modal #request_update_sub1_header').text("Request for "+response_type);
+                    $('#request_update_modal #request_update_id').val(id);
+                    $('#request_update_modal #request_update_type').val(section);
+                    $('#request_update_modal #request_update_sub1').val(post_sub_cat1);
+                    $('#request_update_modal #request_update_sub2').val(post_sub_cat2);
+                    if(section =="question"){
+                    //$('#request_update_modal #request_update_title').text(post_item_topic.trim());
+                    //$('#request_update_modal #request_update_info').text(post_item_more_info.trim());
+
+                    $('#request_update_modal #request_update_title').summernote('code',post_item_topic.trim());
+
+                    $('#request_update_modal #request_update_info').summernote('code',post_item_more_info.trim());
+
+                    }else if(section =="article"){
+                    $('#request_update_modal #request_update_topic').val(post_item_body.trim());
+                    $('#request_update_modal #request_update_info_article').text(post_item_more_info.trim());
+
+                    }else if(section =="riddle"){
+                    $('#request_update_modal #request_update_title_riddle').text(post_item_topic.trim());
+                    }
+
+                }else{
+                    //console.log('response is false');                            
+                }                        
+
+            },
+            error:function(xhr, status, err){
+                // console.log('error');
+                // console.log(xhr);
+                // console.log(status);
+                // console.log(err);
+            }
+        });
+
+
+        });
+
+
+        //new request got from quests,arts etc posts
+        $("body").on('click','.new_request_item',function(){
+        //get this posts data
+        var response_type="";
+        var parent=$(this).parents('.posted');
+        var id=parent.find('input#post_id').val();
+        var section = (parent.find('span.bold.post_box_name').text()).trim();
+        console.log('section '+section);
+
+        /*var post_category=parent.find('.post_category').text();
+        var post_sub_cat1=parent.find('.post_sub_cat1').text();
+        var post_sub_cat2=parent.find('.post_sub_cat2').text();*/
+
+        $("#new_request_modal #new_request_form").trigger('reset'); 
+
+        /*var post_item_topic=parent.find('.item-body .post_item_topic').html();
+        var post_item_body=parent.find('.item-body .post_item_body').html();
+        var post_item_more_info=parent.find('.item-body .post_item_more_info').html();
+        console.log('post_item_topic '+post_item_topic)
+        console.log('post_item_body '+post_item_body)
+        console.log('post_item_more_info '+post_item_more_info);*/
+
+        //append data to modal
+        $('#new_request_modal').modal({backdrop: false, keyboard: false});
+
+        //fetch categories
+        var url='{{url}}/fetchCats';
+
+        $.ajax({
+            url:url,
+            type:'GET',
+            data:{'section':section},
+            headers: {'X-My-App-Token': 'loganstyles'},
+            success:function(response){
+                //console.log(response);
+                if(response.success==true){
+                    var res_cats=(response.cats);
+                    var options="";
+                    res_cats.forEach((curr_item,index,array)=>{
+                    if(curr_item.title)
+                        options+='<option value="'+curr_item.title+'">'+curr_item.title+'</option>';
+                    });
+
+                    //$('#new_request_modal #new_request_category').html(options);
+
+                    switch(section){
+                        case 'question':
+                        response_type='Answer';
+                       /* $('.request_article').hide();
+                        $('.request_question').show();
+                        $('.request_riddle').hide();*/
+                        break;
+
+                        case 'article':
+                        response_type='Review';
+                        /*$('.request_article').show();
+                        $('.request_question').hide();
+                        $('.request_riddle').hide();*/
+                        break;
+
+                        case 'riddle':
+                        response_type='Solution';
+                        /*$('.request_article').hide();
+                        $('.request_question').hide();
+                        $('.request_riddle').show();*/
+                        break;
+                    }
+
+                    $('#new_request_modal #new_request_sub1_header').text("Request for "+response_type);
+                    $('#new_request_modal #new_request_id').val(id);
+                    $('#new_request_modal #new_request_type').val(section);
+                    /*$('#new_request_modal #new_request_sub1').val(post_sub_cat1);
+                    $('#new_request_modal #new_request_sub2').val(post_sub_cat2);
+                    if(section =="question"){
+                    $('#new_request_modal #new_request_title').summernote('code',post_item_topic.trim());
+
+                    $('#new_request_modal #new_request_info').summernote('code',post_item_more_info.trim());
+
+                    }else if(section =="article"){
+                    $('#new_request_modal #new_request_topic').summernote('code',post_item_body.trim());
+                    $('#new_request_modal #new_request_info_article').summernote('code',post_item_more_info.trim());
+
+                    //$('#request_modal #request_topic').val(post_item_body.trim());
+                    //$('#request_modal #request_info_article').text(post_item_more_info.trim());
+
+                    }else if(section =="riddle"){
+                    $('#new_request_modal #new_request_title_riddle').summernote('code',post_item_topic.trim());
+
+                    //$('#request_modal #request_title_riddle').text(post_item_topic.trim());
+                    }
+                    */
+
+                }else{
+                    //console.log('response is false');                            
+                }                        
+
+            },
+            error:function(xhr, status, err){
+                // console.log('error');
+                // console.log(xhr);
+                // console.log(status);
+                // console.log(err);
+            }
+        });
+
+
+        });
+
+        //edit group posts
+        $("body").on('click','.edit_group_item',function(e){
+            //get this posts data
+            var parent=$(this).parents('.posted');
+            var id=parent.find('input#post_id').val();
+            var groupid=parent.find('input#post_groupid').val();
+            var section=parent.find('input#post_type').val();
+            console.log('section '+section)
+            console.log('id '+id)
+            console.log('groupid '+groupid)
+
+            $("#update_suggestion_modal #update_suggestion_form").trigger('reset'); 
+            var post_item_body=parent.find('.item-body .post_item_body').html();
+            console.log('post_item_body '+post_item_body)
+
+
+            $('#update_suggestion_modal').modal({backdrop: false, keyboard: false});
+
+            $('#update_suggestion_modal #update_suggestion_id').val(id);
+            $('#update_suggestion_modal #update_suggestion_group_id').val(groupid);
+            $('#update_suggestion_modal #update_suggestion_title').summernote('code',post_item_body);
+
+        });
+
+        //edit posts
+           $("body").on('click','.edit_section_item',function(e){
+           
+            //get this posts data
+            var parent=$(this).parents('.posted');
+            var id=parent.find('input#post_id').val();
+            var section=parent.find('input#post_type').val();
+            //var prev_section=section;
+            console.log('section '+section)
+
+            var post_category=parent.find('.post_category').text();
+            var post_sub_cat1=parent.find('.post_sub_cat1').text();
+            var post_sub_cat2=parent.find('.post_sub_cat2').text();
+
+            if(section !="Post Books" && section !="notice board" && section !="notice"){ 
+                $("#section_update_modal #section_update_form").trigger('reset');           
+                var post_item_topic=parent.find('.item-body .post_item_topic').html();
+                var post_item_body=parent.find('.item-body .post_item_body').html();
+                var post_item_more_info=parent.find('.item-body .post_item_more_info').html();
+                console.log('post_item_topic '+post_item_topic)
+                console.log('post_item_body '+post_item_body)
+                console.log('post_item_more_info '+post_item_more_info);
+                console.log('post_category '+post_category);
+            
+            
+            //append data to modal
+            $('#section_update_modal').modal({backdrop: false, keyboard: false});
+
+            //fetch categories
+            var url='{{url}}/fetchCats';
+
+            $.ajax({
+                url:url,
+                type:'GET',
+                data:{'section':section},
+                headers: {'X-My-App-Token': 'loganstyles'},
+                success:function(response){
+                    console.log(response);
+                    if(response.success==true){
+                        var res_cats=(response.cats);
+                        var options="";
+                        //append the categories
+                        res_cats.forEach((curr_item,index,array)=>{
+                        if(curr_item.title)
+                            options+='<option value="'+curr_item.title+'">'+curr_item.title+'</option>';
+                        });
+                        $('#section_update_modal #section_update_category').html(options);
+
+//update other fields
+    $('#section_update_modal #section_update_header').text("Edit this "+section);
+    $('#section_update_modal #section_update_id').val(id);
+    $('#section_update_modal #section_update_type').val(section);
+    $('#section_update_modal #section_update_sub1').val(post_sub_cat1);
+    $('#section_update_modal #section_update_sub2').val(post_sub_cat2);
+    $('#section_update_modal #section_update_title').summernote('code',post_item_topic.trim());
+    $('#section_update_modal #section_update_info').summernote('code',post_item_more_info.trim());
+                        
+
+        switch(section){
+        case 'question':
+            $('#section_update_modal .hiddle_for_riddle').show();
+            $('#section_update_modal #section_update_info').text(post_item_more_info.trim());
+            $('#section_update_modal .edit_itemtopic').text('Edit the question');
+            $('#section_update_modal .edit_iteminfo').text('Provide additional information');
+            break;
+
+         case 'article':
+            $('#section_update_modal .hiddle_for_riddle').show();
+            $('#section_update_modal #section_update_info').text(post_item_body.trim());
+            $('#section_update_modal .edit_itemtopic').text('Edit Topic');
+            $('#section_update_modal .edit_iteminfo').text('Edit Article');
+            break;
+
+        case 'riddle':
+            $('#section_update_modal .hiddle_for_riddle').hide();
+            $('#section_update_modal .edit_itemtopic').text('Edit Riddle');
+            break;
+
+        }
+
+        $('#section_update_modal #section_update_category').val(post_category);
+    }else{
+        //console.log('response is false');                            
+    }                        
+
+                },
+                error:function(xhr, status, err){
+                    console.log('error');
+                    console.log(xhr);
+                    console.log(status);
+                    console.log(err);
+                }
+            });
+
+            }else if(section =="Post Books"){
+            $("#section_pab_modal #section_pab_form").trigger('reset');
+            var pab_title=parent.find('.item-body .pab_ititle').text();
+            console.log('pab_title '+pab_title);
+
+            var pab_author=parent.find('.item-body .pab_iauthor').text();
+            console.log('pab_author '+pab_author);
+
+            var pab_pages=parent.find('.item-body .pab_ipages').text();
+            console.log('pab_pages '+pab_pages);
+
+            var pab_amount=parent.find('.item-body .pab_iamount').text().replace("N","");
+            console.log('pab_amount '+pab_amount);
+            //remove the 'N'
+
+            var pab_ISBN=parent.find('.item-body .pab_iISBN').text();
+            console.log('pab_ISBN '+pab_ISBN);
+
+            var pab_publishers=parent.find('.item-body .pab_ipublishers').text();
+            console.log('pab_publishers '+pab_publishers);
+
+            var pab_bookshop=parent.find('.item-body .pab_ibookshop').text();
+            console.log('pab_bookshop '+pab_bookshop);
+
+            var pab_url=parent.find('.item-body .pab_iurl').text();
+            console.log('pab_url '+pab_url);
+
+            var pab_synopsis=parent.find('.item-body .pab_isynopsis').text();
+            console.log('pab_synopsis '+pab_synopsis);
+
+            var pab_about_author=parent.find('.item-body .pab_iabout_author').text();
+            console.log('pab_about_author '+pab_about_author);
+
+            //append data to modal
+            $('#section_pab_modal').modal({backdrop: false, keyboard: false});
+
+            //fetch categories
+            var url='{{url}}/fetchCats';
+
+            $.ajax({
+                url:url,
+                type:'GET',
+                data:{'section':section},
+                headers: {'X-My-App-Token': 'loganstyles'},
+                success:function(response){
+                    console.log(response);
+                    if(response.success==true){
+                        var res_cats=(response.cats);
+                        var options="";
+                        res_cats.forEach((curr_item,index,array)=>{
+                            options+='<option value="'+curr_item.title+'">'+curr_item.title+'</option>';
+                        });
+
+                        $('#section_pab_modal #section_pab_category').html(options);
+                        $('#section_pab_modal #section_pab_sub1_header').text(section);
+                        $('#section_pab_modal #section_pab_id').val(id);
+                        $('#section_pab_modal #section_pab_type').val(section);
+                        $('#section_pab_modal #section_pab_author').val(pab_author);
+                        $('#section_pab_modal #section_pab_amount').val(pab_amount);
+                        $('#section_pab_modal #section_pab_title').val(pab_title.trim());
+                        $('#section_pab_modal #section_pab_isbn').val(pab_ISBN);
+                        $('#section_pab_modal #section_pab_pages').val(pab_pages);
+                        $('#section_pab_modal #section_pab_publishers').val(pab_publishers);
+                        $('#section_pab_modal #section_pab_bookshop').val(pab_bookshop);
+                        $('#section_pab_modal #section_pab_url').val(pab_url);
+                        $('#section_pab_modal #section_pab_synopsis').val(pab_synopsis);
+                        $('#section_pab_modal #section_pab_about_author').val(pab_about_author);
+
+                        
+                        $('#section_pab_modal #section_pab_category').val(post_category);
+                    }else{
+                        console.log('pab cat response is false');                            
+                    }                        
+
+                },
+                error:function(xhr, status, err){
+                    console.log('error');
+                    console.log(xhr);
+                    console.log(status);
+                    console.log(err);
+                }
+            });
+
+
+            }else if(section =="notice board" || section =="notice"){
+
+            $("#notice_update_modal #notice_update_form").trigger('reset');           
+                var post_sub_cat1=parent.find('.item-body .post_item_topic').html();
+                var post_sub_cat2=parent.find('.item-body .sub_cat2').html();
+                var post_item_body=parent.find('.item-body .post_item_body').html();
+                console.log('post_sub_cat1 '+post_sub_cat1)
+                console.log('post_sub_cat2 '+post_sub_cat2)
+                console.log('post_item_body '+post_item_body)
+                console.log('post_category '+post_category);
+
+                //append data to modal
+                $('#notice_update_modal').modal({backdrop: false, keyboard: false});
+
+                //update other fields
+    $('#notice_update_modal #notice_update_sub1_header').text("Edit this "+section);
+    $('#notice_update_modal #notice_update_id').val(id);
+    $('#notice_update_modal #notice_update_type').val(post_sub_cat2.trim());
+    $('#notice_update_modal #notice_update_top_heading').val(post_category);
+    $('#notice_update_modal #notice_update_main_heading').val(post_sub_cat1.trim());
+    $('#notice_update_modal #notice_update_title').summernote('code',post_item_body.trim());
+
+            }
+            
+
+        });
+
+        $( "#section_update_form" ).validate( {/*validate & submit response details*/
+            rules: {  
+                section_update_details: {
+                    required: true
+                }                    
+            },
+            messages: {                        
+                section_update_details: {
+                    required: "This field is required"
+                }
+            },
+                errorElement: "em",
+                errorPlacement: function ( error, element ) {
+                // Add the `help-block` class to the error element
+                error.addClass( "help-block" );
+
+                if ( element.prop( "type" ) === "checkbox" ) {
+                    error.insertAfter( element.parent( "label" ) );
+                } else {
+                    error.insertAfter( element );
+                }
+            },
+            success: function ( label, element ) {
+                // Add the span element, if doesn't exists, and apply the icon classes to it.
+                if ( !$( element ).next( "span" )[ 0 ] ) {
+                    $( "<span class='glyphicon glyphicon-ok form-control-feedback'></span>" ).insertAfter( $( element ) );
+                }
+            },
+            highlight: function ( element, errorClass, validClass ) {
+                $( element ).parents( ".col-sm-5" ).addClass( "has-error" ).removeClass( "has-success" );
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $( element ).parents( ".col-sm-5" ).addClass( "has-success" ).removeClass( "has-error" );
+            },
+
+            submitHandler: function () {
+                //modify button
+                var sub_button=$(this).find(':submit');
+                var old_button_val=sub_button.val();
+                sub_button.prop('disabled', true);
+                sub_button.val('...updating');
+
+                resetFields();
+                var my_url="{{url}}/update_item";
+
+                $("#section_update_form").ajaxSubmit({
+                    url:my_url,
+                    contentType: 'application/json',
+                    success: function(response){
+                        if(response.success==true){
+                            $('#section_update_form  .form_submission_success').text(response.msg);
+                            setTimeout(function(){
+                                $('#section_update_form  .form_submission_success').text('');
+                                sub_button.val(old_button_val);
+                                sub_button.prop('disabled', false);
+                                $('#section_update_modal').modal('hide');
+                                    location.reload();//temp:later use sockets to update the actual post
+                                },3000);
+
+                        }else{
+                            //console.log('response is false');
+                            $('#section_update_form  .form_submission_error').text(response.msg);
+                            sub_button.val(old_button_val);
+                            sub_button.prop('disabled', false);
+                        }
+
+                    },
+                    error:function(xhr, status, err){
+                        //console.log('error');
+                        //console.log(xhr);
+                        //console.log(status);
+                        //console.log(err);
+                    }
+                });
+                
+            }
+        } );
+
+        $( "#section_response_form" ).validate( {/*validate & submit response details*/
+                rules: {  
+                    section_response_details: {
+                        required: true
+                    }                    
+                },
+                messages: {                        
+                    section_response_details: {
+                        required: "This field is required"
+                    }
+                },
+                errorElement: "em",
+                errorPlacement: function ( error, element ) {
+                // Add the `help-block` class to the error element
+                error.addClass( "help-block" );
+
+                if ( element.prop( "type" ) === "checkbox" ) {
+                    error.insertAfter( element.parent( "label" ) );
+                } else {
+                    error.insertAfter( element );
+                }
+            },
+            success: function ( label, element ) {
+                // Add the span element, if doesn't exists, and apply the icon classes to it.
+                if ( !$( element ).next( "span" )[ 0 ] ) {
+                    $( "<span class='glyphicon glyphicon-ok form-control-feedback'></span>" ).insertAfter( $( element ) );
+                }
+            },
+            highlight: function ( element, errorClass, validClass ) {
+                $( element ).parents( ".col-sm-5" ).addClass( "has-error" ).removeClass( "has-success" );
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $( element ).parents( ".col-sm-5" ).addClass( "has-success" ).removeClass( "has-error" );
+            },
+
+            submitHandler: function () {
+                //modify button
+                var sub_button=$(this).find(':submit');
+                var old_button_val=sub_button.val();
+                sub_button.prop('disabled', true);
+                sub_button.val('...processing');
+
+                resetFields();
+                var my_url="{{url}}/response_item";
+                console.log('url: '+my_url);
+
+                $("#section_response_form").ajaxSubmit({
+                    url:my_url,
+                    contentType: 'application/json',
+                    success: function(response){
+                        if(response.success==true){
+                            $('#section_response_form  .form_submission_success').text(response.msg);
+                            setTimeout(function(){
+                                $('#section_response_form  .form_submission_success').text('');
+                                sub_button.val(old_button_val);
+                                sub_button.prop('disabled', false);
+                                $('#section_response_modal').modal('hide');
+                            },3000);
+
+                        }else{
+                            console.log('response is false');
+                            $('#section_response_form  .form_submission_error').text(response.msg);
+                            sub_button.val(old_button_val);
+                            sub_button.prop('disabled', false);
+                        }
+
+                    },
+                    error:function(xhr, status, err){
+                        console.log('error');
+                        console.log(xhr);
+                        console.log(status);
+                        console.log(err);
+                    }
+                });
+                
+            }
+        });
+
+
+        $( "#group_form" ).validate( {/*validate & submit group details*/
+                rules: {  
+                    group_title: {
+                        required: true
+                    },
+                    group_aboutus: {
+                        required: true
+                    }                    
+                },
+                messages: {                        
+                    group_title: {
+                        required: "This field is required"
+                    },
+                    group_aboutus: {
+                        required: "This field is required"
+                    }
+                },
+                errorElement: "em",
+                errorPlacement: function ( error, element ) {
+                // Add the `help-block` class to the error element
+                error.addClass( "help-block" );
+
+                if ( element.prop( "type" ) === "checkbox" ) {
+                    error.insertAfter( element.parent( "label" ) );
+                } else {
+                    error.insertAfter( element );
+                }
+            },
+            success: function ( label, element ) {
+                // Add the span element, if doesn't exists, and apply the icon classes to it.
+                if ( !$( element ).next( "span" )[ 0 ] ) {
+                    $( "<span class='glyphicon glyphicon-ok form-control-feedback'></span>" ).insertAfter( $( element ) );
+                }
+            },
+            highlight: function ( element, errorClass, validClass ) {
+                $( element ).parents( ".col-sm-5" ).addClass( "has-error" ).removeClass( "has-success" );
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $( element ).parents( ".col-sm-5" ).addClass( "has-success" ).removeClass( "has-error" );
+            },
+
+            submitHandler: function () {
+                //modify button
+                var sub_button=$(this).find(':submit');
+                var old_button_val=sub_button.val();
+                sub_button.prop('disabled', true);
+                sub_button.val('...processing');
+
+                resetFields();
+                var my_url="{{url}}/createGroup";
+                console.log('url: '+my_url);
+
+                $("#group_form").ajaxSubmit({
+                    url:my_url,
+                    contentType: 'application/json',
+                    success: function(response){
+                        if(response.success==true){
+                            $('#group_form  .form_submission_success').text(response.msg);
+                            setTimeout(function(){
+                                $('#group_form  .form_submission_success').text('');
+                                sub_button.val(old_button_val);
+                                sub_button.prop('disabled', false);
+                                $('#group_modal').modal('hide');
+                                //location.reload();
+                                //show new group profile
+                                window.location.href="{{url}}/posts/showGroup/"+response.created_id;
+                            },3000);
+
+                        }else{
+                            console.log('response is false');
+                            $('#group_form  .form_submission_error').text(response.msg);
+                            sub_button.val(old_button_val);
+                            sub_button.prop('disabled', false);
+                        }
+
+                    },
+                    error:function(xhr, status, err){
+                        console.log('error');
+                        console.log(xhr);
+                        console.log(status);
+                        console.log(err);
+                    }
+                });
+                
+            }
+        });
+
+
+        //follow posts
+           $("body").on('click','.follow_section_item',function(){
+            //get this posts data
+            var parent=$(this).parents('.posted');
+            var id=parent.find('input#post_id').val();
+            var section=parent.find('input#post_type').val();
+
+            var url='{{url}}/followMember';
+            // console.log('url '+url);
+
+            $.ajax({
+                url:url,
+                type:'POST',
+                data:{'post_id':id,'section':section},
+                headers: {'X-My-App-Token': 'loganstyles'},
+                success:function(response){
+                    console.log(response);
+                    if(response.success==true){
+                        //display notif
+                        alert(response.msg)
+                    }else{
+
+                         }                        
+
+                },
+                error:function(xhr, status, err){
+                    console.log('error');
+                    console.log(xhr);
+                    console.log(status);
+                    console.log(err);
+                }
+            });
+
+        });
+
+
+        //unfollow posts
+           $("body").on('click','.un_follow_section_item',function(){
+            //get this posts data
+            var parent=$(this).parents('.posted');
+            var id=parent.find('input#post_id').val();
+            var section=parent.find('input#post_type').val();
+
+            var url='{{url}}/unfollowMember';
+            // console.log('url '+url);
+
+            $.ajax({
+                url:url,
+                type:'POST',
+                data:{'post_id':id,'section':section},
+                headers: {'X-My-App-Token': 'loganstyles'},
+                success:function(response){
+                    console.log(response);
+                    if(response.success==true){
+                        //display notif
+                        alert(response.msg)
+                    }else{
+
+                         }                        
+
+                },
+                error:function(xhr, status, err){
+                    console.log('error');
+                    console.log(xhr);
+                    console.log(status);
+                    console.log(err);
+                }
+            });
+
+        });
+        
+
+        $( "#section_pab_form" ).validate( {/*validate & submit response details*/
+            rules: {  
+                section_pab_title: {
+                    required: true
+                }                    
+            },
+            messages: {                        
+                section_pab_title: {
+                    required: "This field is required"
+                }
+            },
+                errorElement: "em",
+                errorPlacement: function ( error, element ) {
+                // Add the `help-block` class to the error element
+                error.addClass( "help-block" );
+
+                if ( element.prop( "type" ) === "checkbox" ) {
+                    error.insertAfter( element.parent( "label" ) );
+                } else {
+                    error.insertAfter( element );
+                }
+            },
+            success: function ( label, element ) {
+                // Add the span element, if doesn't exists, and apply the icon classes to it.
+                if ( !$( element ).next( "span" )[ 0 ] ) {
+                    $( "<span class='glyphicon glyphicon-ok form-control-feedback'></span>" ).insertAfter( $( element ) );
+                }
+            },
+            highlight: function ( element, errorClass, validClass ) {
+                $( element ).parents( ".col-sm-5" ).addClass( "has-error" ).removeClass( "has-success" );
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $( element ).parents( ".col-sm-5" ).addClass( "has-success" ).removeClass( "has-error" );
+            },
+
+            submitHandler: function () {
+                //modify button
+                var sub_button=$(this).find(':submit');
+                var old_button_val=sub_button.val();
+                sub_button.prop('disabled', true);
+                sub_button.val('...updating');
+
+                resetFields();
+                var my_url="{{url}}/update_pab_item";
+
+                $("#section_pab_form").ajaxSubmit({
+                    url:my_url,
+                    contentType: 'application/json',
+                    success: function(response){
+                        if(response.success==true){
+                            $('#section_pab_form  .form_submission_success').text(response.msg);
+                            setTimeout(function(){
+                                $('#section_pab_form  .form_submission_success').text('');
+                                sub_button.val(old_button_val);
+                                sub_button.prop('disabled', false);
+                                $('#section_update_modal').modal('hide');
+                                    location.reload();//temp:later use sockets to update the actual post
+                                },3000);
+
+                        }else{
+                            //console.log('response is false');
+                            $('#section_pab_form  .form_submission_error').text(response.msg);
+                            sub_button.val(old_button_val);
+                            sub_button.prop('disabled', false);
+                        }
+
+                    },
+                    error:function(xhr, status, err){
+                        //console.log('error');
+                        //console.log(xhr);
+                        //console.log(status);
+                        //console.log(err);
+                    }
+                });
+                
+            }
+        } );
+
+        $('body').on('change','.sel_sub1',function(){/*get sub1s for selected cat*/
+                var selected =$(this).val();
+                var selected_id=$(this).attr('id');
+                console.log(selected_id);
+                var required_id_sub2="#"+selected_id.replace('_sub1','_sub2');
+
+                var required_type=selected_id.replace('_sub1','');
+                console.log(required_id_sub2);
+
+                var my_url="{{url}}/cms/selected_sub1/"+required_type+"/"+selected;
+
+                    $.ajax({
+                        url:my_url,
+                        type:'GET',
+                            headers: {'X-My-App-Token': 'loganstyles'},
+                            success:function(response){
+                                console.log(response);
+
+                                $(required_id_sub2).html('');
+                                $.each(response.sub2_data,function(key,value){
+                                    console.log(value.title);
+                                    console.log(value.value);
+                                    $(required_id_sub2).append('<option value="'+value.value+'">'+value.title+'</option>');
+
+                                });
+                            },
+                            error:function(xhr, status, err){
+                                console.log('error');
+                                console.log(xhr);
+                                console.log(status);
+                                console.log(err);
+                            }
+                        });
+
+            });
+
+            $( "#riddle_form" ).validate( {/*validate & submit riddle modal data*/
+                rules: {  
+                    riddle_category: {
+                        required: true
+                    },
+                    riddle_title: {
+                        required: true,
+                    }
+                    
+                },
+                messages: {                        
+                    riddle_category: {
+                        required: "This field is required"
+                    },
+                    riddle_title: {
+                        required: "This field is required"
+                    }
+                },
+                errorElement: "em",
+                errorPlacement: function ( error, element ) {
+                // Add the `help-block` class to the error element
+                error.addClass( "help-block" );
+
+                if ( element.prop( "type" ) === "checkbox" ) {
+                    error.insertAfter( element.parent( "label" ) );
+                } else {
+                    error.insertAfter( element );
+                }
+            },
+            success: function ( label, element ) {
+                // Add the span element, if doesn't exists, and apply the icon classes to it.
+                if ( !$( element ).next( "span" )[ 0 ] ) {
+                    $( "<span class='glyphicon glyphicon-ok form-control-feedback'></span>" ).insertAfter( $( element ) );
+                }
+            },
+            highlight: function ( element, errorClass, validClass ) {
+                $( element ).parents( ".col-sm-5" ).addClass( "has-error" ).removeClass( "has-success" );
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $( element ).parents( ".col-sm-5" ).addClass( "has-success" ).removeClass( "has-error" );
+            },
+
+            submitHandler: function () {
+                //modify button
+                var sub_button=$("#riddle_form").find(':submit');
+                var old_button_val=sub_button.val();
+                sub_button.prop('disabled', true);
+                sub_button.val('...processing');
+
+                resetFields("#riddle_form");
+                var my_url="{{url}}/ask_riddle";
+                $("#riddle_form").ajaxSubmit({
+                    url:my_url,
+                       contentType: 'application/json',
+                       success: function(response){
+                        if(response.success==true){
+                                console.log('image uploaded and form submitted');
+                                $('#riddle_form  .form_submission_success').text(response.msg);
+                                setTimeout(function(){
+                                    $('#riddle_form  .form_submission_success').text('');
+                                    sub_button.val(old_button_val);
+                                    sub_button.prop('disabled', false);
+                                    $('#riddle_modal').modal('hide');
+                                },3000);
+                                
+                            }else{
+                                console.log('response is false');
+                                $('#riddle_form  .form_submission_error').text(response.msg);
+                                sub_button.val(old_button_val);
+                                sub_button.prop('disabled', false);
+                            }
+                              
+                       },
+                       error:function(xhr, status, err){
+                            console.log('error');
+                            console.log(xhr);
+                            console.log(status);
+                            console.log(err);
+                        }
+                   });
+                
+            }
+            } );
+
+
+        $( "#question_form" ).validate( {/*validate & submit question modal data*/
+                rules: {  
+                    question_category: {
+                        required: true
+                    },
+                    question_title: {
+                        required: true,
+                    }
+                    
+                },
+                messages: {                        
+                    question_category: {
+                        required: "This field is required"
+                    },
+                    question_title: {
+                        required: "This field is required"
+                    }
+                },
+                errorElement: "em",
+                errorPlacement: function ( error, element ) {
+                // Add the `help-block` class to the error element
+                error.addClass( "help-block" );
+
+                if ( element.prop( "type" ) === "checkbox" ) {
+                    error.insertAfter( element.parent( "label" ) );
+                } else {
+                    error.insertAfter( element );
+                }
+            },
+            success: function ( label, element ) {
+                // Add the span element, if doesn't exists, and apply the icon classes to it.
+                if ( !$( element ).next( "span" )[ 0 ] ) {
+                    $( "<span class='glyphicon glyphicon-ok form-control-feedback'></span>" ).insertAfter( $( element ) );
+                }
+            },
+            highlight: function ( element, errorClass, validClass ) {
+                $( element ).parents( ".col-sm-5" ).addClass( "has-error" ).removeClass( "has-success" );
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $( element ).parents( ".col-sm-5" ).addClass( "has-success" ).removeClass( "has-error" );
+            },
+
+            submitHandler: function () {
+                //modify button
+                var sub_button=$("#question_form").find(':submit');
+                var old_button_val=sub_button.val();
+                sub_button.prop('disabled', true);
+                sub_button.val('...processing');
+
+                resetFields("#question_form");
+                var my_url="{{url}}/ask_question";
+                console.log('section quest url '+my_url)
+                $("#question_form").ajaxSubmit({
+                    url:my_url,
+                       contentType: 'application/json',
+                       success: function(response){
+                        if(response.success==true){
+                                console.log('image uploaded and form submitted');
+                                $('#question_form  .form_submission_success').text(response.msg);
+                                setTimeout(function(){
+                                    $('#question_form  .form_submission_success').text('');
+                                    sub_button.val(old_button_val);
+                                    sub_button.prop('disabled', false);
+                                    $('#question_modal').modal('hide');
+                                },3000);
+                                
+                            }else{
+                                console.log('response is false');
+                                $('#question_form  .form_submission_error').text(response.msg);
+                                sub_button.val(old_button_val);
+                                sub_button.prop('disabled', false);
+                            }
+                              
+                       },
+                       error:function(xhr, status, err){
+                            console.log('error');
+                            console.log(xhr);
+                            console.log(status);
+                            console.log(err);
+                        }
+                   });
+                
+            }
+            } );
+
+
+        $( "#article_form" ).validate( {/*validate & submit article modal data*/
+                rules: {  
+                    article_category: {
+                        required: true
+                    },
+                    article_title: {
+                        required: true,
+                    }
+                    
+                },
+                messages: {                        
+                    article_category: {
+                        required: "This field is required"
+                    },
+                    article_title: {
+                        required: "This field is required"
+                    }
+                },
+                errorElement: "em",
+                errorPlacement: function ( error, element ) {
+                // Add the `help-block` class to the error element
+                error.addClass( "help-block" );
+
+                if ( element.prop( "type" ) === "checkbox" ) {
+                    error.insertAfter( element.parent( "label" ) );
+                } else {
+                    error.insertAfter( element );
+                }
+            },
+            success: function ( label, element ) {
+                // Add the span element, if doesn't exists, and apply the icon classes to it.
+                if ( !$( element ).next( "span" )[ 0 ] ) {
+                    $( "<span class='glyphicon glyphicon-ok form-control-feedback'></span>" ).insertAfter( $( element ) );
+                }
+            },
+            highlight: function ( element, errorClass, validClass ) {
+                $( element ).parents( ".col-sm-5" ).addClass( "has-error" ).removeClass( "has-success" );
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $( element ).parents( ".col-sm-5" ).addClass( "has-success" ).removeClass( "has-error" );
+            },
+
+            submitHandler: function () {
+                //modify button
+                var sub_button=$("#article_form").find(':submit');
+                var old_button_val=sub_button.val();
+                sub_button.prop('disabled', true);
+                sub_button.val('...processing');
+
+                resetFields("#article_form");
+                var my_url="{{url}}/ask_article";
+                $("#article_form").ajaxSubmit({
+                    url:my_url,
+                       contentType: 'application/json',
+                       success: function(response){
+                        if(response.success==true){
+                                console.log('image uploaded and form submitted');
+                                $('#article_form  .form_submission_success').text(response.msg);
+                                setTimeout(function(){
+                                    $('#article_form  .form_submission_success').text('');
+                                    sub_button.val(old_button_val);
+                                    sub_button.prop('disabled', false);
+                                    $('#article_modal').modal('hide');
+                                },3000);
+                                
+                            }else{
+                                console.log('response is false');
+                                $('#article_form  .form_submission_error').text(response.msg);
+                                sub_button.val(old_button_val);
+                                sub_button.prop('disabled', false);
+                            }
+                              
+                       },
+                       error:function(xhr, status, err){
+                            console.log('error');
+                            console.log(xhr);
+                            console.log(status);
+                            console.log(err);
+                        }
+                   });
+                
+            }
+            } );
+
+
+            $( "#request_form" ).validate( {/*validate & submit request modal data*/
+                rules: {  
+                    request_category: {
+                        required: true
+                    },
+                    request_title: {
+                        required: true,
+                    }
+                },
+                messages: {                        
+                    request_category: {
+                        required: "This field is required"
+                    },
+                    request_title: {
+                        required: "This field is required"
+                    }
+                },
+                errorElement: "em",
+                errorPlacement: function ( error, element ) {
+                // Add the `help-block` class to the error element
+                error.addClass( "help-block" );
+
+                if ( element.prop( "type" ) === "checkbox" ) {
+                    error.insertAfter( element.parent( "label" ) );
+                } else {
+                    error.insertAfter( element );
+                }
+            },
+            success: function ( label, element ) {
+                // Add the span element, if doesn't exists, and apply the icon classes to it.
+                if ( !$( element ).next( "span" )[ 0 ] ) {
+                    $( "<span class='glyphicon glyphicon-ok form-control-feedback'></span>" ).insertAfter( $( element ) );
+                }
+            },
+            highlight: function ( element, errorClass, validClass ) {
+                $( element ).parents( ".col-sm-5" ).addClass( "has-error" ).removeClass( "has-success" );
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $( element ).parents( ".col-sm-5" ).addClass( "has-success" ).removeClass( "has-error" );
+            },
+
+            submitHandler: function () {
+                //modify button
+                var sub_button=$("#request_form").find(':submit');
+                var old_button_val=sub_button.val();
+                sub_button.prop('disabled', true);
+                sub_button.val('...processing');
+
+                resetFields("#request_form");
+                var my_url="{{url}}/make_request";
+                $("#request_form").ajaxSubmit({
+                    url:my_url,
+                       contentType: 'application/json',
+                       success: function(response){
+                        if(response.success==true){
+                                console.log('image uploaded and form submitted');
+                                $('#request_form  .form_submission_success').text(response.msg);
+                                setTimeout(function(){
+                                    $('#request_form  .form_submission_success').text('');
+                                    sub_button.val(old_button_val);
+                                    sub_button.prop('disabled', false);
+                                    $('#request_modal').modal('hide');
+                                },3000);
+                                
+                            }else{
+                                console.log('response is false');
+                                $('#request_form  .form_submission_error').text(response.msg);
+                                sub_button.val(old_button_val);
+                                sub_button.prop('disabled', false);
+                            }
+                              
+                       },
+                       error:function(xhr, status, err){
+                            console.log('error');
+                            console.log(xhr);
+                            console.log(status);
+                            console.log(err);
+                        }
+                   });
+                
+            }
+            } );
+
+
+            $( "#new_request_form" ).validate( {/*validate & submit new_request modal data*/
+                rules: {  
+                    new_request_category: {
+                        required: true
+                    },
+                    new_request_title: {
+                        required: true,
+                    }
+                    
+                },
+                messages: {                        
+                    new_request_category: {
+                        required: "This field is required"
+                    },
+                    new_request_title: {
+                        required: "This field is required"
+                    }
+                },
+                errorElement: "em",
+                errorPlacement: function ( error, element ) {
+                // Add the `help-block` class to the error element
+                error.addClass( "help-block" );
+
+                if ( element.prop( "type" ) === "checkbox" ) {
+                    error.insertAfter( element.parent( "label" ) );
+                } else {
+                    error.insertAfter( element );
+                }
+            },
+            success: function ( label, element ) {
+                // Add the span element, if doesn't exists, and apply the icon classes to it.
+                if ( !$( element ).next( "span" )[ 0 ] ) {
+                    $( "<span class='glyphicon glyphicon-ok form-control-feedback'></span>" ).insertAfter( $( element ) );
+                }
+            },
+            highlight: function ( element, errorClass, validClass ) {
+                $( element ).parents( ".col-sm-5" ).addClass( "has-error" ).removeClass( "has-success" );
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $( element ).parents( ".col-sm-5" ).addClass( "has-success" ).removeClass( "has-error" );
+            },
+
+            submitHandler: function () {
+                //modify button
+                var sub_button=$("#new_request_form").find(':submit');
+                var old_button_val=sub_button.val();
+                sub_button.prop('disabled', true);
+                sub_button.val('...processing');
+
+                resetFields("#new_request_form");
+                var my_url="{{url}}/make_new_request";
+                console.log('url '+my_url);
+                $("#new_request_form").ajaxSubmit({
+                    url:my_url,
+                       contentType: 'application/json',
+                       success: function(response){
+                        if(response.success==true){
+                                //console.log('image uploaded and form submitted');
+                                $('#new_request_form  .form_submission_success').text(response.msg);
+                                setTimeout(function(){
+                                    $('#new_request_form  .form_submission_success').text('');
+                                    sub_button.val(old_button_val);
+                                    sub_button.prop('disabled', false);
+                                    $('#new_request_modal').modal('hide');
+                                },3000);
+                                
+                            }else{
+                                console.log('response is false');
+                                $('#new_request_form  .form_submission_error').text(response.msg);
+                                sub_button.val(old_button_val);
+                                sub_button.prop('disabled', false);
+                            }
+                              
+                       },
+                       error:function(xhr, status, err){
+                           /* console.log('error');
+                            console.log(xhr);
+                            console.log(status);
+                            console.log(err);*/
+                        }
+                   });
+                
+            }
+            } );
+
+            $( "#request_update_form" ).validate( {/*validate & submit request modal data*/
+                rules: {  
+                    request_update_category: {
+                        required: true
+                    },
+                    request_update_title: {
+                        required: true,
+                    }
+                    
+                },
+                messages: {                        
+                    request_update_category: {
+                        required: "This field is required"
+                    },
+                    request_update_title: {
+                        required: "This field is required"
+                    }
+                },
+                errorElement: "em",
+                errorPlacement: function ( error, element ) {
+                // Add the `help-block` class to the error element
+                error.addClass( "help-block" );
+
+                if ( element.prop( "type" ) === "checkbox" ) {
+                    error.insertAfter( element.parent( "label" ) );
+                } else {
+                    error.insertAfter( element );
+                }
+            },
+            success: function ( label, element ) {
+                // Add the span element, if doesn't exists, and apply the icon classes to it.
+                if ( !$( element ).next( "span" )[ 0 ] ) {
+                    $( "<span class='glyphicon glyphicon-ok form-control-feedback'></span>" ).insertAfter( $( element ) );
+                }
+            },
+            highlight: function ( element, errorClass, validClass ) {
+                $( element ).parents( ".col-sm-5" ).addClass( "has-error" ).removeClass( "has-success" );
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $( element ).parents( ".col-sm-5" ).addClass( "has-success" ).removeClass( "has-error" );
+            },
+
+            submitHandler: function () {
+                //modify button
+                var sub_button=$("#request_update_form").find(':submit');
+                var old_button_val=sub_button.val();
+                sub_button.prop('disabled', true);
+                sub_button.val('...processing');
+
+                resetFields("#request_update_form");
+                var my_url="{{url}}/update_request";
+                $("#request_update_form").ajaxSubmit({
+                    url:my_url,
+                       contentType: 'application/json',
+                       success: function(response){
+                        if(response.success==true){
+                                console.log('image uploaded and form submitted');
+                                $('#request_update_form  .form_submission_success').text(response.msg);
+                                setTimeout(function(){
+                                    $('#request_update_form  .form_submission_success').text('');
+                                    sub_button.val(old_button_val);
+                                    sub_button.prop('disabled', false);
+                                    $('#request_update_modal').modal('hide');
+                                },3000);
+                                
+                            }else{
+                                console.log('response is false');
+                                $('#request_update_form  .form_submission_error').text(response.msg);
+                                sub_button.val(old_button_val);
+                                sub_button.prop('disabled', false);
+                            }
+                              
+                       },
+                       error:function(xhr, status, err){
+                            console.log('error');
+                            console.log(xhr);
+                            console.log(status);
+                            console.log(err);
+                        }
+                   });
+                
+            }
+            } );
+
+            $( "#update_suggestion_form" ).validate( {/*validate & submit updated group post data*/
+                rules: {  
+                    update_suggestion_title: {
+                        required: true
+                    }
+                    
+                },
+                messages: {                        
+                    update_suggestion_title: {
+                        required: "This field is required"
+                    }
+                },
+                errorElement: "em",
+                errorPlacement: function ( error, element ) {
+                // Add the `help-block` class to the error element
+                error.addClass( "help-block" );
+
+                if ( element.prop( "type" ) === "checkbox" ) {
+                    error.insertAfter( element.parent( "label" ) );
+                } else {
+                    error.insertAfter( element );
+                }
+            },
+            success: function ( label, element ) {
+                // Add the span element, if doesn't exists, and apply the icon classes to it.
+                if ( !$( element ).next( "span" )[ 0 ] ) {
+                    $( "<span class='glyphicon glyphicon-ok form-control-feedback'></span>" ).insertAfter( $( element ) );
+                }
+            },
+            highlight: function ( element, errorClass, validClass ) {
+                $( element ).parents( ".col-sm-5" ).addClass( "has-error" ).removeClass( "has-success" );
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $( element ).parents( ".col-sm-5" ).addClass( "has-success" ).removeClass( "has-error" );
+            },
+
+            submitHandler: function () {
+                //modify button
+                var sub_button=$("#update_suggestion_form").find(':submit');
+                var old_button_val=sub_button.val();
+                sub_button.prop('disabled', true);
+                sub_button.val('...processing');
+
+                resetFields("#update_suggestion_form");
+                var my_url="{{url}}/update_suggestion";
+                $("#update_suggestion_form").ajaxSubmit({
+                    url:my_url,
+                       contentType: 'application/json',
+                       success: function(response){
+                        if(response.success==true){
+                                console.log('image uploaded and form submitted');
+                                $('#update_suggestion_form  .form_submission_success').text(response.msg);
+                                setTimeout(function(){
+                                    $('#update_suggestion_form  .form_submission_success').text('');
+                                    sub_button.val(old_button_val);
+                                    sub_button.prop('disabled', false);
+                                    $('#update_suggestion_modal').modal('hide');
+                                    location.reload();
+                                },3000);
+                                
+                            }else{
+                                console.log('response is false');
+                                $('#update_suggestion_form  .form_submission_error').text(response.msg);
+                                sub_button.val(old_button_val);
+                                sub_button.prop('disabled', false);
+                            }
+                              
+                       },
+                       error:function(xhr, status, err){
+                            console.log('error');
+                            console.log(xhr);
+                            console.log(status);
+                            console.log(err);
+                        }
+                   });
+                
+            }
+            } );
+
+
+        $( "#pab_form" ).validate( {/*validate & submit pab modal data*/
+                rules: {  
+                    pab_category: {
+                        required: true
+                    },
+                    pab_title: {
+                        required: true,
+                    }
+                    
+                },
+                messages: {                        
+                    pab_category: {
+                        required: "This field is required"
+                    },
+                    pab_title: {
+                        required: "This field is required"
+                    }
+                },
+                errorElement: "em",
+                errorPlacement: function ( error, element ) {
+                // Add the `help-block` class to the error element
+                error.addClass( "help-block" );
+
+                if ( element.prop( "type" ) === "checkbox" ) {
+                    error.insertAfter( element.parent( "label" ) );
+                } else {
+                    error.insertAfter( element );
+                }
+            },
+            success: function ( label, element ) {
+                // Add the span element, if doesn't exists, and apply the icon classes to it.
+                if ( !$( element ).next( "span" )[ 0 ] ) {
+                    $( "<span class='glyphicon glyphicon-ok form-control-feedback'></span>" ).insertAfter( $( element ) );
+                }
+            },
+            highlight: function ( element, errorClass, validClass ) {
+                $( element ).parents( ".col-sm-5" ).addClass( "has-error" ).removeClass( "has-success" );
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $( element ).parents( ".col-sm-5" ).addClass( "has-success" ).removeClass( "has-error" );
+            },
+
+            submitHandler: function () {
+                //modify button
+                var sub_button=$("#pab_form").find(':submit');
+                var old_button_val=sub_button.val();
+                sub_button.prop('disabled', true);
+                sub_button.val('...processing');
+
+                resetFields("#pab_form");
+                var my_url="{{url}}/ask_pab";
+                $("#pab_form").ajaxSubmit({
+                    url:my_url,
+                       contentType: 'application/json',
+                       success: function(response){
+                        if(response.success==true){
+                                console.log('image uploaded and form submitted');
+                                $('#pab_form  .form_submission_success').text(response.msg);
+                                setTimeout(function(){
+                                    $('#pab_form  .form_submission_success').text('');
+                                    sub_button.val(old_button_val);
+                                    sub_button.prop('disabled', false);
+                                    $('#pab_modal').modal('hide');
+                                },3000);
+                                
+                            }else{
+                                console.log('response is false');
+                                $('#pab_form  .form_submission_error').text(response.msg);
+                                sub_button.val(old_button_val);
+                                sub_button.prop('disabled', false);
+                            }
+                              
+                       },
+                       error:function(xhr, status, err){
+                            console.log('error');
+                            console.log(xhr);
+                            console.log(status);
+                            console.log(err);
+                        }
+                   });
+                
+            }
+            } );
+
+
+            $( "#notice_form" ).validate( {/*validate & submit pab modal data*/
+                rules: {  
+                    notice_top_heading: {
+                        required: true
+                    },
+                    notice_main_heading: {
+                        required: true,
+                    }
+                    
+                },
+                messages: {                        
+                    notice_top_heading: {
+                        required: "This field is required"
+                    },
+                    notice_main_heading: {
+                        required: "This field is required"
+                    }
+                },
+                errorElement: "em",
+                errorPlacement: function ( error, element ) {
+                // Add the `help-block` class to the error element
+                error.addClass( "help-block" );
+
+                if ( element.prop( "type" ) === "checkbox" ) {
+                    error.insertAfter( element.parent( "label" ) );
+                } else {
+                    error.insertAfter( element );
+                }
+            },
+            success: function ( label, element ) {
+                // Add the span element, if doesn't exists, and apply the icon classes to it.
+                if ( !$( element ).next( "span" )[ 0 ] ) {
+                    $( "<span class='glyphicon glyphicon-ok form-control-feedback'></span>" ).insertAfter( $( element ) );
+                }
+            },
+            highlight: function ( element, errorClass, validClass ) {
+                $( element ).parents( ".col-sm-5" ).addClass( "has-error" ).removeClass( "has-success" );
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $( element ).parents( ".col-sm-5" ).addClass( "has-success" ).removeClass( "has-error" );
+            },
+
+            submitHandler: function () {
+                //modify button
+                var sub_button=$("#notice_form").find(':submit');
+                var old_button_val=sub_button.val();
+                sub_button.prop('disabled', true);
+                sub_button.val('...processing');
+
+                resetFields("#notice_form");
+                var my_url="{{url}}/ask_notice";
+                $("#notice_form").ajaxSubmit({
+                    url:my_url,
+                       contentType: 'application/json',
+                       success: function(response){
+                        if(response.success==true){
+                                console.log('image uploaded and form submitted');
+                                $('#notice_form  .form_submission_success').text(response.msg);
+                                setTimeout(function(){
+                                    $('#notice_form  .form_submission_success').text('');
+                                    sub_button.val(old_button_val);
+                                    sub_button.prop('disabled', false);
+                                    $('#notice_modal').modal('hide');
+                                },3000);
+                                
+                            }else{
+                                console.log('response is false');
+                                $('#notice_form  .form_submission_error').text(response.msg);
+                                sub_button.val(old_button_val);
+                                sub_button.prop('disabled', false);
+                            }
+                              
+                       },
+                       error:function(xhr, status, err){
+                            console.log('error');
+                            console.log(xhr);
+                            console.log(status);
+                            console.log(err);
+                        }
+                   });
+                
+            }
+            } );
+
+
+$( "#notice_update_form" ).validate( {/*validate & submit pab modal data*/
+                rules: {  
+                    notice_update_top_heading: {
+                        required: true
+                    },
+                    notice_update_main_heading: {
+                        required: true,
+                    }
+                    
+                },
+                messages: {                        
+                    notice_update_top_heading: {
+                        required: "This field is required"
+                    },
+                    notice_update_main_heading: {
+                        required: "This field is required"
+                    }
+                },
+                errorElement: "em",
+                errorPlacement: function ( error, element ) {
+                // Add the `help-block` class to the error element
+                error.addClass( "help-block" );
+
+                if ( element.prop( "type" ) === "checkbox" ) {
+                    error.insertAfter( element.parent( "label" ) );
+                } else {
+                    error.insertAfter( element );
+                }
+            },
+            success: function ( label, element ) {
+                // Add the span element, if doesn't exists, and apply the icon classes to it.
+                if ( !$( element ).next( "span" )[ 0 ] ) {
+                    $( "<span class='glyphicon glyphicon-ok form-control-feedback'></span>" ).insertAfter( $( element ) );
+                }
+            },
+            highlight: function ( element, errorClass, validClass ) {
+                $( element ).parents( ".col-sm-5" ).addClass( "has-error" ).removeClass( "has-success" );
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $( element ).parents( ".col-sm-5" ).addClass( "has-success" ).removeClass( "has-error" );
+            },
+
+            submitHandler: function () {
+                //modify button
+                var sub_button=$("#notice_update_form").find(':submit');
+                var old_button_val=sub_button.val();
+                sub_button.prop('disabled', true);
+                sub_button.val('...processing');
+
+                resetFields("#notice_update_form");
+                var my_url="{{url}}/update_notice";
+                $("#notice_update_form").ajaxSubmit({
+                    url:my_url,
+                       contentType: 'application/json',
+                       success: function(response){
+                        if(response.success==true){
+                                console.log('image uploaded and form submitted');
+                                $('#notice_update_form  .form_submission_success').text(response.msg);
+                                setTimeout(function(){
+                                    $('#notice_update_form  .form_submission_success').text('');
+                                    sub_button.val(old_button_val);
+                                    sub_button.prop('disabled', false);
+                                    $('#notice_update_modal').modal('hide');
+                                    location.reload();
+                                },3000);
+                                
+                            }else{
+                                console.log('response is false');
+                                $('#notice_update_form  .form_submission_error').text(response.msg);
+                                sub_button.val(old_button_val);
+                                sub_button.prop('disabled', false);
+                            }
+                              
+                       },
+                       error:function(xhr, status, err){
+                            console.log('error');
+                            console.log(xhr);
+                            console.log(status);
+                            console.log(err);
+                        }
+                   });
+                
+            }
+            } );
+
+
+            $( "#suggestion_form" ).validate( {/*validate & submit suggestion modal data*/
+                rules: {  
+                    suggestion_title: {
+                        required: true
+                    }
+                    
+                },
+                messages: {                        
+                    suggestion_title: {
+                        required: "This field is required"
+                    }
+                },
+                errorElement: "em",
+                errorPlacement: function ( error, element ) {
+                // Add the `help-block` class to the error element
+                error.addClass( "help-block" );
+
+                if ( element.prop( "type" ) === "checkbox" ) {
+                    error.insertAfter( element.parent( "label" ) );
+                } else {
+                    error.insertAfter( element );
+                }
+            },
+            success: function ( label, element ) {
+                // Add the span element, if doesn't exists, and apply the icon classes to it.
+                if ( !$( element ).next( "span" )[ 0 ] ) {
+                    $( "<span class='glyphicon glyphicon-ok form-control-feedback'></span>" ).insertAfter( $( element ) );
+                }
+            },
+            highlight: function ( element, errorClass, validClass ) {
+                $( element ).parents( ".col-sm-5" ).addClass( "has-error" ).removeClass( "has-success" );
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $( element ).parents( ".col-sm-5" ).addClass( "has-success" ).removeClass( "has-error" );
+            },
+
+            submitHandler: function () {
+                //modify button
+                var sub_button=$("#suggestion_form").find(':submit');
+                var old_button_val=sub_button.val();
+                sub_button.prop('disabled', true);
+                sub_button.val('...processing');
+
+                resetFields("#suggestion_form");
+                var my_url="{{url}}/post_suggestion";
+                $("#suggestion_form").ajaxSubmit({
+                    url:my_url,
+                       contentType: 'application/json',
+                       success: function(response){
+                        if(response.success==true){
+                                console.log('image uploaded and form submitted');
+                                $('#suggestion_form  .form_submission_success').text(response.msg);
+                                setTimeout(function(){
+                                    $('#suggestion_form  .form_submission_success').text('');
+                                    sub_button.val(old_button_val);
+                                    sub_button.prop('disabled', false);
+                                    $('#suggestion_modal').modal('hide');
+                                    //load suggestion page
+                                    window.location.href="{{url}}/posts/showGroupPosts/"+response.suggestion_id;
+                                },3000);
+                                
+                            }else{
+                                console.log('response is false');
+                                $('#suggestion_form  .form_submission_error').text(response.msg);
+                                sub_button.val(old_button_val);
+                                sub_button.prop('disabled', false);
+                            }
+                              
+                       },
+                       error:function(xhr, status, err){
+                            console.log('error');
+                            console.log(xhr);
+                            console.log(status);
+                            console.log(err);
+                        }
+                   });
+                
+            }
+            } );
+
+});
+
+        </script>
+
+        
+
+

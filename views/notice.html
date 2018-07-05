@@ -1,0 +1,696 @@
+{{>header_member}}
+
+<!-- BEGIN CONTAINER -->
+        <div class="page-container">
+            <!-- BEGIN CONTENT -->
+            <div class="page-content-wrapper">
+                <!-- BEGIN CONTENT BODY -->
+                <!-- BEGIN PAGE HEAD-->
+                <div class="page-head">  </div>
+                <!-- END PAGE HEAD-->
+                <!-- BEGIN PAGE CONTENT BODY -->
+                <div class="page-content">
+                    <div class="container">
+
+                        <!-- BEGIN PAGE CONTENT INNER -->
+                        <div class="page-content-inner">                            
+                            <!-- BEGIN MODALS FOR EDIT-->
+
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="col-md-3">
+                                        <!-- BEGIN PROFILE SIDEBAR -->
+                                        <div class="profile-sidebar">
+                                            
+                                            <!-- <div class="portlet light ">                                    
+                                                <div>
+                                                    <h3 class="profile-desc-title">Advert</h3>
+                                                </div>
+                                            </div> -->
+                                            <!-- END PORTLET MAIN -->
+                                        </div>
+                                        <!-- END BEGIN PROFILE SIDEBAR -->
+                                    </div>
+
+        <div class="col-md-6">                                        
+            <!-- BEGIN PORTLET -->
+            <div class="panel panel-default portlet" {{#unless page_response}} style="display: none;"{{/unless}}>
+              <div class="panel-body" style="width: 100%;">
+                <div class="posts_top_actions_left">
+                    <span class="posts_page_title">{{page_title}}</span>
+                </div>
+                
+                <div class="posts_top_actions_right">
+                    <a class="page_top_actions" onclick="modalLoader('question','new','');">Ask a question</a>&nbsp;|&nbsp;
+
+                    <a class="page_top_actions" onclick="modalLoader('article','new','');">Write an article</a>&nbsp;|&nbsp;
+
+                    <a class="page_top_actions" onclick="modalLoader('riddle','new','');">Post a riddle</a>&nbsp;|&nbsp;
+
+                    <a class="page_top_actions" onclick="modalLoader('pab','new','');">Post a book</a>
+                   
+                </div>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+
+            
+            <div class="question_all_post_area notice">
+
+            {{#each data}}
+
+             <div class="portlet light posted">
+             <input type="hidden" id="post_id" value="{{_id}}">
+             <input type="hidden" id="post_type" value="{{../page_type}}">
+
+                <div class="portlet-title">
+                    <div class="caption caption-md">
+                        
+                        <a href="{{../url}}/posts/section/{{post_type}}/All/0">
+                        <span class="caption-subject  bold post_box_name">{{../page_type}}</span>
+                        </a>
+                        {{#if category}}
+                        <span style="text-transform: uppercase;" class="caption-helper post_category grey_cats left_border">{{category}}</span>
+                        {{/if}}
+                    </div>
+
+                       
+                    </div>
+                    <div class="portlet-body" style="padding-top: 0px;">
+                        <div class="" data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2">
+                            <div class="general-item-list">
+                                <div class="item">
+                                    <div class="item-head">
+
+                                    <div style="width: 100%;"><!--main block-->
+                                        <div class="posts_partition"><!--1st partition-->
+                                            <div style="width: 100%;">
+                                                <div class="section_posts_avatar">
+                                                <a href="{{../url}}/profile/{{owner.id}}">
+                                                   <img class="icon_size_50 img-circle" src="{{../url}}/{{owner.displayPic}}">
+                                                </div>
+                                                </a>
+                                                <div class="section_posts_text">
+                                                    <div> 
+                                                     <a style="font-weight: 600;" href="{{../url}}/profile/{{owner.id}}" class="item-name">{{owner.displayName}}</a>
+                                                     </div>
+                                                     {{#if owner.status}}
+                                                     <a href="{{../url}}/profile/{{owner.id}}">
+                                                        <div class="post_item_body_status">
+                                                        {{owner.status}}
+                                                        </div>
+                                                        </a>
+                                                      {{/if}}
+                                                    
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </div>
+
+                                        </div>
+
+                                         <div class="posts_partition_middle"><!--2nd partition-->
+                                            <span>
+                                            {{#if (eq friend_status 'friend')}}
+                                                <img class="" src="{{../url}}/images/filler.png">
+                                                {{else}}
+                                                    {{#if (eq friend_status 'Pending')}}
+                                                    <span class="post_box_name">Pending Friend Request</span>
+                                                    {{else}}
+                                                    <img class="icon_size_20 send_friend_req" src="{{../url}}/images/add_person.png">
+                                                {{/if}}
+                                            {{/if}}
+                                            
+                                            </span>
+                                        </div>
+                                         <div class="posts_partition"><!--3rd partition-->
+                                            <div class="pull-right">
+                                                 <div class="fromnow">{{moment post_date "fromNow"}}</div>
+                                                    <div class="clearfix"></div>
+                                                    <div class="post_actions_button_left">
+                                                        <!-- <img class="icon_size_20" src="{{../url}}/images/mask.png"> -->
+                                                    </div>
+                                                {{#if post_owner}}
+                                                 <div class="actions post_actions_button" >
+                                                        <div class="btn-group">
+                                                            <span class="item-status cursor_dropper" data-toggle="dropdown">
+                                                                <i class="fa fa-ellipsis-h"></i>
+                                                            </span>
+                                                            <ul class="dropdown-menu pull-right">
+                                                                <li class="edit_section_item">
+                                                                    <a href="#">
+                                                                        <i class="fa fa-pencil"></i> Edit </a>
+                                                                </li>
+                                                                <li class="delete_section_item">
+                                                                    <a href="#">
+                                                                        <i class="fa fa-trash-o"></i> Delete </a>
+                                                                </li>                           
+                                                            </ul>
+                                                        </div>                                           
+                                                </div>
+                                                {{else}}
+                                                <div class="actions post_actions_button">
+                                                        <div class="btn-group">
+                                                            <span class="item-status cursor_dropper" data-toggle="dropdown">
+                                                                <i class="fa fa-ellipsis-h"></i>
+                                                            </span>
+                                                            <ul class="dropdown-menu pull-right">
+                                                                <li class="follow_section_item">
+                                                                    <a href="#">
+                                                                        <i class="fa fa-plus"></i> Follow </a>
+                                                                </li>
+                                                                {{#unless bookmarked_post}}
+                                                <li class="bookmark_section_item">
+                                                    <a href="javascript:;">
+                                                        <i class="fa fa-bookmark"></i> Bookmark </a>
+                                                </li>
+                                                {{/unless}}
+                                                                <li class="">
+                                                                    <a href="javascript:;">
+                                                                        <img class="icon_size_20" src="{{../url}}/images/mask.png"> Mask </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="javascript:;">
+                                                                        <i class="fa fa-ban"></i> Report Abuse </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>                                           
+                                                </div>
+                                                {{/if}}
+                                            </div><!--end float right-->
+                                            <div class="clearfix"></div>
+                                        </div>
+
+                                    <div class="clearfix"></div>
+                                    </div>                                      
+                                        
+
+                                    </div>
+                                    
+                                        <div class="item-body"> 
+                                        
+                                        <a href="{{../url}}/posts/section/{{post_type}}/all_responses/{{_id}}"><div class="post_item post_item_topic" style="text-align: center;text-transform: uppercase;">
+                                         {{sub_cat1}}</div></a>
+                                        
+                                        <hr class="short_length">
+
+                                            {{#if topic}}
+                                                <div class="post_item post_item_topic">
+                                                    {{topic}}
+                                                </div>
+                                            {{/if}}
+
+                                            {{#if pics.length }}
+                                                <div style="margin-bottom: 3%;">                                                                  
+                                                    <img class="img-responsive" src="{{../url}}/{{pics.[0]}}">
+                                                </div>
+                                            {{/if}}
+
+                                                <div class="post_item post_item_body">
+                                                    {{{body}}}
+                                                
+                                                </div>
+                                            
+                                        </div> <br>
+
+
+                                        <div style="width: 100%;"><!--main block-->
+
+                                        <div class="pull-left"></div>
+                                        
+
+                                            <div class="posts_partition_right"><!--3rd partition-->
+
+                                                <a class="btn btn-link ">
+                                                    <span class="grey_button">
+                                                        <span class="social_value">{{views}}</span>&nbsp;
+                                                        Views
+                                                    </span>
+                                                </a>
+
+                                            </div>
+
+                                        <div class="clearfix"></div>
+                                    </div><hr style="margin:0;">
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END PORTLET -->
+                   
+                    <div class="task-footer" style="">
+                    {{#ifEquals 'notification' sub_cat2}}
+
+                        <div class="btn-arrow-link ">
+                             <a class="btn btn-link post_likes">
+                                <span class="grey_button">
+                                    <span class="social_value ">{{likes}}</span>
+                                    <i class="fa fa-heart-o"></i>&nbsp;Likes
+                                </span>
+                            </a>
+
+                            <a class="btn btn-link" href="{{../url}}/posts/getComments/{{post_type}}/{{_id}}/0">
+                                <span class="grey_button">
+                                    <span class="social_value">{{comments.length}}</span>
+                                    <img class="icon_size_20" src="{{../url}}/images/comments.png">&nbsp;Comments
+                                </span>
+                            </a>
+
+                            <div class="btn-group dropup">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Shares <i class="fa fa-angle-up"></i>
+                </button>
+
+                <ul class="dropdown-menu pull-right" role="menu">
+                    <li>
+                        <a href="#" {{#if pics.length }} {{#if trend_status}} data-image="{{../url}}/{{pics}}" {{else}} data-image="{{../url}}/{{pics.[0]}}" {{/if}}{{/if}} data-social="facebook" data-title="{{shared_body}}" data-description="{{shared_description}}" data-url="{{../url}}/posts/section/{{post_type}}/all_responses/{{_id}}"><i class="fa fa-facebook-official"></i> Share on Facebook <span data-counter="facebook"></span> </a>
+                    </li>
+                    <li>
+                        <a href="#" {{#if pics.length }} {{#if trend_status}} data-image="{{../url}}/{{pics}}" {{else}} data-image="{{../url}}/{{pics.[0]}}" {{/if}}{{/if}} data-social="twitter" data-title="{{shared_body}}" data-description="{{shared_description}}" data-url="{{../url}}/posts/section/{{post_type}}/all_responses/{{_id}}"><i class="fa fa-twitter-square"></i> Share on Twitter <span data-counter="twitter"></span> </a>
+                    </li>
+                    <li>
+                        <a href="#" {{#if pics.length }} {{#if trend_status}} data-image="{{../url}}/{{pics}}" {{else}} data-image="{{../url}}/{{pics.[0]}}" {{/if}}{{/if}} data-social="linkedin" data-title="{{shared_body}}" data-description="{{shared_description}}" data-url="{{../url}}/posts/section/{{post_type}}/all_responses/{{_id}}"> <i class="fa fa-linkedin-square"></i> Share on LinkedIn <span data-counter="linkedin"></span> </a>
+                    </li>
+                    <li>
+                        <a href="#" {{#if pics.length }} {{#if trend_status}} data-image="{{../url}}/{{pics}}" {{else}} data-image="{{../url}}/{{pics.[0]}}" {{/if}}{{/if}} data-social="googleplus" data-title="{{shared_body}}" data-description="{{shared_description}}" data-url="{{../url}}/posts/section/{{post_type}}/all_responses/{{_id}}"><i class="fa fa-google-plus-square"></i> Share on Google <span data-counter="googleplus"></span> </a>
+                    </li>
+                    
+                </ul>
+            </div>                        
+                        </div>
+                        {{else}}
+
+                        <div class="btn-arrow-link ">
+                             <a class="btn btn-link post_attending">
+                                <span class="grey_button">
+                                    <span class="social_value ">{{attending.length}}</span>
+                                    <img class="icon_size_20" src="{{../url}}/images/attending.png">&nbsp;Attending
+                                </span>
+                            </a>
+
+                            <a class="btn btn-link post_not_attending">
+                                <span class="grey_button">
+                                    <span class="social_value">{{not_attending.length}}</span>
+                                    <img class="icon_size_20" src="{{../url}}/images/not_attending.png">&nbsp;Not Attending
+                                </span>
+                            </a>
+
+                            <a class="btn btn-link" href="{{../url}}/posts/getComments/{{post_type}}/{{_id}}/0">
+                                <span class="grey_button">
+                                    <span class="social_value">{{comments.length}}</span>
+                                    <img class="icon_size_20" src="{{../url}}/images/comments.png">&nbsp;Comments
+                                </span>
+                            </a>  
+
+                            
+                            <div class="btn-group dropup">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Shares <i class="fa fa-angle-up"></i>
+                </button>
+
+                <ul class="dropdown-menu pull-right" role="menu">
+                    <li>
+                        <a href="#" {{#if pics.length }} {{#if trend_status}} data-image="{{../url}}/{{pics}}" {{else}} data-image="{{../url}}/{{pics.[0]}}" {{/if}}{{/if}} data-social="facebook" data-title="{{shared_body}}" data-description="{{shared_description}}" data-url="{{../url}}/posts/section/{{post_type}}/all_responses/{{_id}}"><i class="fa fa-facebook-official"></i> Share on Facebook <span data-counter="facebook"></span> </a>
+                    </li>
+                    <li>
+                        <a href="#" {{#if pics.length }} {{#if trend_status}} data-image="{{../url}}/{{pics}}" {{else}} data-image="{{../url}}/{{pics.[0]}}" {{/if}}{{/if}} data-social="twitter" data-title="{{shared_body}}" data-description="{{shared_description}}" data-url="{{../url}}/posts/section/{{post_type}}/all_responses/{{_id}}"><i class="fa fa-twitter-square"></i> Share on Twitter <span data-counter="twitter"></span> </a>
+                    </li>
+                    <li>
+                        <a href="#" {{#if pics.length }} {{#if trend_status}} data-image="{{../url}}/{{pics}}" {{else}} data-image="{{../url}}/{{pics.[0]}}" {{/if}}{{/if}} data-social="linkedin" data-title="{{shared_body}}" data-description="{{shared_description}}" data-url="{{../url}}/posts/section/{{post_type}}/all_responses/{{_id}}"> <i class="fa fa-linkedin-square"></i> Share on LinkedIn <span data-counter="linkedin"></span> </a>
+                    </li>
+                    <li>
+                        <a href="#" {{#if pics.length }} {{#if trend_status}} data-image="{{../url}}/{{pics}}" {{else}} data-image="{{../url}}/{{pics.[0]}}" {{/if}}{{/if}} data-social="googleplus" data-title="{{shared_body}}" data-description="{{shared_description}}" data-url="{{../url}}/posts/section/{{post_type}}/all_responses/{{_id}}"><i class="fa fa-google-plus-square"></i> Share on Google <span data-counter="googleplus"></span> </a>
+                    </li>
+                    
+                </ul>
+            </div>                        
+                        </div>
+
+
+
+                    {{/ifEquals}}
+
+                    <hr class="long_length">
+
+            <div style="width: 100%;" class="new_comments">    
+                <input type="hidden" id="new_comment_section" value="notice">
+                <input type="hidden" id="new_comment_section_id" value="{{_id}}">
+                <input type="hidden" id="new_comment_response_id" value="">
+                <a class=" sbold comment_button">Write a comment</a>
+            </div>
+                        
+                    </div>
+                    <div class="clearfix"></div>
+
+                </div>
+            {{/each}}
+            </div>
+
+
+        </div>
+
+                                    <div class="col-md-3"><!--third-->
+                                        <div class="row">
+                                            <!-- BEGIN PORTLET -->
+                                            <!-- <div class="portlet light "> -->
+                                                <!-- <div class="portlet-title tabbable-line">
+                                                    <div class="caption caption-md">
+                                                        <i class="icon-globe theme-font hide"></i>
+                                                        <span class="caption-subject font-blue-madison bold uppercase">See What is Trending Now</span>
+                                                    </div>
+
+                                                </div> -->
+                                                <!-- <div class="portlet-body"> -->
+                                                    <!--BEGIN TABS-->
+                                                    <!-- <div class="tab-content">
+                                                        <div class="tab-pane active" id="tab_1_1">
+                                                            <div class="scroller" style="height: 320px;" data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2">
+                                                                <ul class="feeds">
+                                                                    <li>
+                                                                        <div class="col1">
+                                                                            <div class="cont">
+                                                                                <div class="cont-col1">
+                                                                                    <div class="label label-sm label-success">
+                                                                                        <i class="fa fa-bullhorn"></i>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="cont-col2">
+                                                                                    <div class="desc"> Tech industry gets new valuation today ...(more) </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col2">
+                                                                            <div class="date"> - Technology </div>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li>
+                                                                        <div class="col1">
+                                                                            <div class="cont">
+                                                                                <div class="cont-col1">
+                                                                                    <div class="label label-sm label-success">
+                                                                                        <i class="fa fa-bullhorn"></i>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="cont-col2">
+                                                                                    <div class="desc"> Uber's Founder Tranck kalanics resigned today...(more) </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col2">
+                                                                            <div class="date"> - Startups </div>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li>
+                                                                        <div class="col1">
+                                                                            <div class="cont">
+                                                                                <div class="cont-col1">
+                                                                                    <div class="label label-sm label-success">
+                                                                                        <i class="fa fa-bullhorn"></i>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="cont-col2">
+                                                                                    <div class="desc"> 2 young Nigerian start-ups get funding...(more) </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col2">
+                                                                            <div class="date"> - Startups </div>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li>
+                                                                        <div class="col1">
+                                                                            <div class="cont">
+                                                                                <div class="cont-col1">
+                                                                                    <div class="label label-sm label-success">
+                                                                                        <i class="fa fa-bullhorn"></i>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="cont-col2">
+                                                                                    <div class="desc">Trump visits France for G20 Summit...(more) </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col2">
+                                                                            <div class="date"> - Politics </div>
+                                                                        </div>
+                                                                    </li>                                                               
+
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+
+                                                    </div> -->
+                                                    <!--END TABS-->
+                                                <!-- </div> -->
+                                            </div>
+                                            <!-- END PORTLET -->
+                                        </div>
+
+                                        <div class="row">
+                                            <!-- BEGIN PORTLET -->
+                                            <!-- <div class="portlet light  tasks-widget">
+                                                <div class="portlet-title">
+                                                    <div class="caption caption-md">
+                                                        <i class="icon-bar-chart theme-font hide"></i>
+                                                        <span class="caption-subject font-blue-madison bold uppercase">Check Domiit's Experts</span>
+                                                    </div>
+                                                </div>
+                                                <div class="portlet-body">
+                                                    <div class="task-content">
+                                                        <div class="scroller" style="height: 282px;" data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2">
+                                                            <ul class="task-list">
+                                                                <li>
+                                                                    <div class="task-checkbox">
+                                                                        <input type="hidden" value="1" name="test" />
+                                                                        <input type="checkbox" class="liChild" name="test" /> </div>
+                                                                    <div class="task-title">
+                                                                        <span class="task-title-sp"> Dr. Samuel Joseph </span>
+                                                                        <span class="label label-sm label-success">Follow</span>
+
+                                                                    </div>
+
+                                                                </li>
+                                                                <li>
+                                                                    <div class="task-checkbox">
+                                                                        <input type="checkbox" class="liChild" value="" /> </div>
+                                                                    <div class="task-title">
+                                                                        <span class="task-title-sp"> Mr. Jonathan Eboh </span>
+                                                                        <span class="label label-sm label-success">Follow</span>
+                                                                    </div>                                                                
+                                                                </li>
+                                                                <li>
+                                                                    <div class="task-checkbox">
+                                                                        <input type="checkbox" class="liChild" value="" /> </div>
+                                                                    <div class="task-title">
+                                                                        <span class="task-title-sp"> Bellow Umaru </span>
+                                                                        <span class="label label-sm label-success">Follow</span>
+
+                                                                    </div>
+                                                                </li>
+                                                                <li>
+                                                                    <div class="task-checkbox">
+                                                                        <input type="checkbox" class="liChild" value="" /> </div>
+                                                                    <div class="task-title">
+                                                                        <span class="task-title-sp"> Titus Bradley </span>
+                                                                        <span class="label label-sm label-success">Follow</span>
+                                                                    </div>
+                                                                </li>
+
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="task-footer">
+                                                        <div class="btn-arrow-link pull-right">
+                                                            <a href="javascript:;">See All Tasks</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> -->
+                                        </div>
+
+                                        <!-- <div class="row">
+                                            <div class="portlet light  tasks-widget">
+                                                <div class="portlet-title">
+                                                    <div class="caption caption-md">
+                                                        <i class="icon-bar-chart theme-font hide"></i>
+                                                        <span class="caption-subject font-blue-madison bold uppercase">Adverts</span>
+                                                    </div>
+                                                </div>
+                                                <div class="portlet-body">
+                                                    <div class="task-content">
+                                                        <div class="scroller" style="height: 282px;" data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> -->
+
+                                    </div>  
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END PAGE CONTENT INNER -->
+                    </div>
+                </div>
+                <!-- END PAGE CONTENT BODY -->
+                <!-- END CONTENT BODY -->
+            </div>
+
+            <!-- START MODAL PORTLET-->
+
+            <div class="portlet-body form">                                         
+
+            </div>
+
+               
+            </div>
+
+
+            <!-- END MODAL PORTLET-->
+            <!-- END CONTENT -->
+            <!-- BEGIN QUICK SIDEBAR -->
+            <a href="javascript:;" class="page-quick-sidebar-toggler">
+                <i class="icon-login"></i>
+            </a>
+
+            <!-- END QUICK SIDEBAR -->
+        </div>
+        <!-- END CONTAINER -->
+        {{>footer_cms}}
+
+        <script type="text/javascript">
+
+            $( document ).ready( function () {
+
+            //follow posts
+           $("body").on('click','.follow_section_item',function(){
+            //get this posts data
+            var parent=$(this).parents('.posted');
+            var id=parent.find('input#post_id').val();
+            var section=parent.find('input#post_type').val();
+
+            var url='{{url}}/followMember';
+            // console.log('url '+url);
+
+            $.ajax({
+                url:url,
+                type:'POST',
+                data:{'post_id':id,'section':section},
+                headers: {'X-My-App-Token': 'loganstyles'},
+                success:function(response){
+                    console.log(response);
+                    if(response.success==true){
+                        //display notif
+                        alert(response.msg)
+                    }else{
+
+                         }                        
+
+                },
+                error:function(xhr, status, err){
+                    console.log('error');
+                    console.log(xhr);
+                    console.log(status);
+                    console.log(err);
+                }
+            });
+
+        });
+
+           
+
+
+            $( "#section_response_form" ).validate( {/*validate & submit response details*/
+                rules: {  
+                    section_response_details: {
+                        required: true
+                    }                    
+                },
+                messages: {                        
+                    section_response_details: {
+                        required: "This field is required"
+                    }
+                },
+                errorElement: "em",
+                errorPlacement: function ( error, element ) {
+                // Add the `help-block` class to the error element
+                error.addClass( "help-block" );
+
+                if ( element.prop( "type" ) === "checkbox" ) {
+                    error.insertAfter( element.parent( "label" ) );
+                } else {
+                    error.insertAfter( element );
+                }
+            },
+            success: function ( label, element ) {
+                // Add the span element, if doesn't exists, and apply the icon classes to it.
+                if ( !$( element ).next( "span" )[ 0 ] ) {
+                    $( "<span class='glyphicon glyphicon-ok form-control-feedback'></span>" ).insertAfter( $( element ) );
+                }
+            },
+            highlight: function ( element, errorClass, validClass ) {
+                $( element ).parents( ".col-sm-5" ).addClass( "has-error" ).removeClass( "has-success" );
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $( element ).parents( ".col-sm-5" ).addClass( "has-success" ).removeClass( "has-error" );
+            },
+
+            submitHandler: function () {
+                //modify button
+                var sub_button=$(this).find(':submit');
+                var old_button_val=sub_button.val();
+                sub_button.prop('disabled', true);
+                sub_button.val('...processing');
+
+                resetFields();
+                var my_url="{{url}}/response_item";
+                console.log('url: '+my_url);
+
+                $("#section_response_form").ajaxSubmit({
+                    url:my_url,
+                    contentType: 'application/json',
+                    success: function(response){
+                        if(response.success==true){
+                            $('#section_response_form  .form_submission_success').text(response.msg);
+                            setTimeout(function(){
+                                $('#section_response_form  .form_submission_success').text('');
+                                sub_button.val(old_button_val);
+                                sub_button.prop('disabled', false);
+                                $('#section_response_modal').modal('hide');
+                            },3000);
+
+                        }else{
+                            console.log('response is false');
+                            $('#section_response_form  .form_submission_error').text(response.msg);
+                            sub_button.val(old_button_val);
+                            sub_button.prop('disabled', false);
+                        }
+
+                    },
+                    error:function(xhr, status, err){
+                        console.log('error');
+                        console.log(xhr);
+                        console.log(status);
+                        console.log(err);
+                    }
+                });
+                
+            }
+        } );
+
+
+        
+               
+
+            });
+
+            </script>
+
+
+    </body>
+
+</html>

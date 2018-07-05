@@ -1,0 +1,1219 @@
+{{>header_member}}
+
+<!-- BEGIN CONTAINER -->
+    <div class="page-container">
+        <!-- BEGIN CONTENT -->
+        <div class="page-content-wrapper">
+            <!-- BEGIN CONTENT BODY -->
+            <!-- BEGIN PAGE HEAD-->
+            <div class="page-head">  </div>
+            <!-- END PAGE HEAD-->
+            <!-- BEGIN PAGE CONTENT BODY -->
+            <div class="page-content">
+                <div class="container-fluid">
+
+                    <!-- BEGIN PAGE CONTENT INNER -->
+                    <div class="page-content-inner">                            
+                        <!-- BEGIN MODALS FOR EDIT-->
+
+
+                        <div class="row">
+                            <div class="col-md-12 col-lg-12 col-sm-12">
+                            <div class="col-md-2 col-lg-2"></div>
+                            <div class="col-md-7 col-lg-7 profile_top profile_area" style="">                                        
+
+                                <div class="profile_bgimg_container"><!--background img-->
+                                    <div class="pro_bgimage">
+                                  {{#if backgroundPic}}
+                                    <img class="object-fit_cover" src="{{url}}/{{backgroundPic}}">
+                                    {{/if}}
+                                    </div>
+                                </div>
+
+                                <div class="profile_img_container">
+                                    <div class="pro_image">
+                                    
+                                    <img class="object-fit_cover" src="{{url}}/{{displayPic}}">
+                                    
+                                    </div>
+                                </div>
+
+                                <div class="profile_editicon_container">
+                                {{#if isOwner}}
+                                    <div class="profile_editicon" onclick="modalLoader('profile_bio1','edit','');">
+                                    <img src="{{url}}/images/edit_icon_24.png">
+
+                                    </div>
+                                    {{/if}}
+                                    <div class="clearfix"></div>
+                                </div>
+
+
+                                <div class="profile_hr">
+                                    <div class="profile_img_text">
+                                        <div style="font-weight: 600;">{{user_info.displayName}}</div>  
+                                        <div>{{designation}}</div>
+                                        <div>{{qualification}}</div>
+                                        <div style="text-transform: capitalize;">{{user_info.location}}</div>                                   
+                                    </div>
+                                    <div class="thin_border_top">
+                                    {{#if isOwner}}
+
+                                    <div class="profile_editicon" style="cursor: pointer;" onclick="modalLoader('profile_desc','edit','');">
+                                      <img src="{{url}}/images/edit_icon_24.png">
+                                      {{/if}}
+
+                                    </div>
+                                    <div class="clearfix"></div>
+
+                                    <div class="more">
+                                      {{{user_info.description}}}
+                                    </div>
+
+                                  </div>
+                                  <div class="thin_border_top">
+                                      <div class="col-md-6 col-lg-6 col-sm-12 profile_bios">
+                                        <div class="profile_text_section">
+                                          <!-- <div class="profile_editicon" style="cursor: pointer;" onclick="modalLoader('profile_bio1','edit','');">
+                                            <img class="icon_size_15" src="{{url}}/images/edit_icon_24.png">
+
+                                          </div>
+                                          <div class="clearfix"></div> -->
+                                          <span class="profile_text_head">Age:</span>
+                                          <span class="profile_text_body">{{age}}</span>          
+                                        </div>
+
+                                        <div class="profile_text_section thin_border_top">
+                                          <span class="profile_text_head">Gender:</span>
+                                          <span class="profile_text_body">{{user_info.gender}}</span>          
+                                        </div>
+
+                                        <div class="profile_text_section thin_border_top">
+                                          <span class="profile_text_head">Email:</span>
+                                          <span style="text-transform: lowercase;" class="profile_text_body">{{user_info.email}}</span>          
+                                        </div>
+                                        <!-- <div class="profile_text_section thin_border_top">
+                                          <span class="profile_text_head">Location:</span>
+                                          <span style="text-transform: lowercase;" class="profile_text_body">{{user_info.location}}</span>          
+                                        </div> -->
+
+                                          <div class="profile_text_section thin_border_top multiple">
+                                          <div style="width: 100%;">
+                                            <div class="section_title">
+                                                <div class="profile_text_head ">Education:</div>
+                                            </div>
+                                            <div class="section_icon">
+                                            {{#if isOwner}}
+                                              <div class="action_icons" onclick="modalLoader('profile_edu','new','');">
+                                                <img class="icon_size_15" src="{{url}}/images/add.png">
+                                                <div class="clearfix"></div>
+                                              </div>
+                                              {{/if}}
+                                            </div>
+                                              <div class="clearfix"></div>
+                                            </div>
+
+                                            {{#each user_info.education}}
+
+                                            <div class="profile_subitem">
+
+                                              <div class="profile_text_body">
+                                                <div class="profile_text_title"><strong>{{title}}</strong></div>
+                                                <div class="profile_text_duration"><span class="from_year">{{from_year}}</span> - <span class="to_year">{{to_year}}</span></div>
+                                                <input type="hidden" class="subitem_id" value="{{_id}}">
+                                              </div>
+
+                                              <div class="profile_text_body_icons">  
+                                              {{#if isOwner}}   
+
+                                                <div class="action_icons edit_icon hide_edit_icons" >
+                                                  <img class="icon_size_15" src="{{url}}/images/edit_icon_24.png">
+                                                  <div class="clearfix"></div>
+                                                </div>
+
+                                                {{/if}}
+                                                
+                                              </div>
+
+                                              <div class="clearfix"></div>
+                                            </div>
+                                            {{/each}}
+                                                 
+                                          </div>
+
+
+                                          <div class="profile_text_section thin_border_top multiple">
+                                            <div style="width: 100%;">
+                                            <div class="section_title">
+                                                <div class="profile_text_head ">Qualification:</div>
+                                            </div>
+                                            {{#if isOwner}}
+                                              <div class="section_icon">
+                                                <div class="action_icons" onclick="modalLoader('profile_qual','new','');">
+                                                  <img class="icon_size_15" src="{{url}}/images/add.png">
+                                                  <div class="clearfix"></div>
+                                                </div>
+                                              </div>
+                                              {{/if}}
+                                              <div class="clearfix"></div>
+                                            </div>
+                                          
+                                            
+
+                                            {{#each user_info.qualification}}
+
+                                            <div class="profile_subitem">
+
+                                              <div class="profile_text_body">
+                                                <div class="profile_text_title"><strong>{{title}}</strong></div>
+                                                <div class="profile_text_duration"><span class="year">{{year}}</span> </div>
+                                                <input type="hidden" class="subitem_id" value="{{_id}}">
+                                              </div>
+
+                                              <div class="profile_text_body_icons">
+                                              {{#if isOwner}}
+                                                <div class="action_icons edit_qual_icon hide_edit_icons" >
+                                                  <img class="icon_size_15" src="{{url}}/images/edit_icon_24.png">
+                                                  <div class="clearfix"></div>
+                                                </div>
+                                                {{/if}}
+                                              </div>
+
+                                              <div class="clearfix"></div>
+                                            </div>
+                                            {{/each}}
+                                                 
+                                          </div>
+
+
+                                          <div class="profile_text_section thin_border_top multiple">
+                                            <div style="width: 100%;">
+                                            <div class="section_title">
+                                                <div class="profile_text_head ">Schools Attended:</div>
+                                            </div>
+                                            {{#if isOwner}}
+                                              <div class="section_icon">
+                                                <div class="action_icons" onclick="modalLoader('profile_sch','new','');">
+                                                  <img class="icon_size_15" src="{{url}}/images/add.png">
+                                                  <div class="clearfix"></div>
+                                                </div>
+                                              </div>
+                                              {{/if}}
+                                              <div class="clearfix"></div>
+                                            </div>
+
+                                            {{#each user_info.schools}}
+
+                                            <div class="profile_subitem">
+
+                                              <div class="profile_text_body">
+                                                <div class="profile_text_title"><strong>{{title}}</strong></div>
+                                                <input type="hidden" class="subitem_id" value="{{_id}}">
+                                              </div>
+
+                                              <div class="profile_text_body_icons">
+                                              {{#if isOwner}}
+                                                <div class="action_icons edit_sch_icon hide_edit_icons" >
+                                                  <img class="icon_size_15" src="{{url}}/images/edit_icon_24.png">
+                                                  <div class="clearfix"></div>
+                                                </div>
+                                                {{/if}}
+                                                
+                                              </div>
+
+                                              <div class="clearfix"></div>
+                                            </div>
+                                            {{/each}}
+                                                 
+                                          </div>
+                                                                                        
+                                      </div>
+
+                                      <div class="col-md-6 col-lg-6 col-sm-12 ">                 
+                                          <div class="profile_text_section line_space">
+                                            <div class="profile_text_head">Friends:</div>
+                                            <div class="profile_text_body">{{friends_count}}</div>  
+                                            <div class="clearfix"></div>     
+                                          </div>
+
+                                          <div class="profile_text_section line_space">
+                                            <div class="profile_text_head">Groups:</div>
+                                            <div class="profile_text_body">{{groups_count}}</div>  
+                                            <div class="clearfix"></div>     
+                                          </div>
+
+                                          <div class="profile_text_section line_space">
+                                            <div class="profile_text_head">Follows:</div>
+                                            <div class="profile_text_body">{{followed_count}}</div>
+                                            <div class="clearfix"></div>       
+                                          </div>
+
+                                          <div class="profile_text_section line_space">
+                                            <div class="profile_text_head">Followed:</div>
+                                            <div class="profile_text_body">{{followers_count}}</div>
+                                            <div class="clearfix"></div>         
+                                          </div>
+
+                                          <div class="profile_text_section line_space">
+                                            <div class="profile_text_head">Upvotes:</div>
+                                            <div class="profile_text_body">{{user_info.upvotes}}</div>
+                                            <div class="clearfix"></div>         
+                                          </div>
+
+                                          <div class="profile_text_section line_space">
+                                            <div class="profile_text_head">Downvotes:</div>
+                                            <div class="profile_text_body">{{user_info.downvotes}}</div>
+                                            <div class="clearfix"></div>        
+                                          </div>
+
+                                          <div class="profile_text_section line_space">
+                                            <div class="profile_text_head">Bookmarks:</div>
+                                            <div class="profile_text_body">{{bookmarks_count}}</div>
+                                            <div class="clearfix"></div>        
+                                          </div>
+                                                                                        
+                                      </div>
+                                      
+                                  </div>
+                              </div>
+
+                          </div>
+                            <div class="col-md-2 col-lg-2"></div>
+                          </div>
+                      </div>
+
+                      <!--activities-->
+                      <div class="row">
+                        <div class="col-md-12 col-lg-12 col-sm-12">
+                          <div class="col-md-2 col-lg-2"></div>
+                          <div class="col-md-7 col-lg-7 profile_top profile_area">                                        
+
+                           <div class="col-md-12 col-lg-12 col-sm-12 ">
+                             <div class="profile_section_top_button">
+                               <a href="javascript:;" style="color: #86be25;" class="btn btn-outline sbold"> Activities</a>
+                             </div>
+                             
+                             <div class="profile_activities">               
+                              <div class="profile_text_section bottom_line_space">
+                                <div class="profile_text_head">Questions asked:</div>
+                                <div class="profile_text_body">{{questions_count}}</div>
+                                <div class="clearfix"></div>          
+                              </div>
+
+                              <div class="profile_text_section bottom_line_space">
+                                <div class="profile_text_head">Answers provided:</div>
+                                <div class="profile_text_body">{{answers_count}}</div>          
+                              </div>
+                              <div class="bottom_see_more">
+                              <a target="_blank" href="{{url}}/myfeeds/question" style="color: #86be25;" class="btn btn-outline sbold"> SEE MORE</a>
+                              </div>
+                              <div class="clearfix"></div>
+                              <div id="profile_">
+                                
+                              </div>
+                            </div>
+
+                            <div class="profile_activities thin_border_activity">               
+                              <div class="profile_text_section bottom_line_space">
+                                <div class="profile_text_head">Articles posted:</div>
+                                <div class="profile_text_body">{{articles_count}}</div>          
+                              </div>
+
+                              <div class="profile_text_section bottom_line_space">
+                                <div class="profile_text_head">Articles reviewed:</div>
+                                <div class="profile_text_body">{{reviews_count}}</div>          
+                              </div>
+                              <div class="bottom_see_more">
+                                <a target="_blank" href="{{url}}/myfeeds/article" style="color: #86be25;" class="btn btn-outline sbold"> SEE MORE</a>
+                              </div>
+
+                              <div class="clearfix"></div>
+                            </div>
+
+                            <div class="profile_activities thin_border_activity">               
+                              <div class="profile_text_section bottom_line_space">
+                                <div class="profile_text_head">Riddles posted:</div>
+                                <div class="profile_text_body">{{riddles_count}}</div>          
+                              </div>
+
+                              <div class="profile_text_section bottom_line_space">
+                                <div class="profile_text_head">Solutions provided:</div>
+                                <div class="profile_text_body">{{solutions_count}}</div>          
+                              </div>
+                              <div class="bottom_see_more">
+                                <a target="_blank" href="{{url}}/myfeeds/riddle" style="color: #86be25;" class="btn btn-outline sbold"> SEE MORE</a>
+                              </div>
+
+                              <div class="clearfix"></div>
+                            </div>
+
+                            <div class="profile_activities thin_border_activity">              
+
+                              <div class="profile_text_section bottom_line_space">
+                                <div class="profile_text_head">Books posted:</div>
+                                <div class="profile_text_body">{{postedbooks_count}}</div>          
+                              </div>
+                              <div class="bottom_see_more">
+                              <a target="_blank" href="{{url}}/myfeeds/pab" style="color: #86be25;" class="btn btn-outline sbold"> SEE MORE</a>
+                               
+                              </div>
+
+                              <div class="clearfix"></div>
+                            </div>
+
+
+                          </div>
+
+                        </div>
+                        <div class="col-md-2 col-lg-2"></div>
+                      </div>
+                    </div>
+
+                    <!--violations-->
+                      <div class="row">
+                        <div class="col-md-12 col-lg-12 col-sm-12">
+                          <div class="col-md-2 col-lg-2"></div>
+                          <div class="col-md-7 col-lg-7 profile_top profile_area">                                        
+
+                           <div class="col-md-12 col-lg-12 col-sm-12 ">
+                             <div class="profile_section_top_button">
+                               <a href="javascript:;" style="color: #86be25;" class="btn btn-outline sbold"> violations</a>
+                             </div>
+                             
+                             <div class="profile_activities">               
+                              <div class="profile_text_section">
+                                <div class="profile_text_head">No report of violations</div>
+                              </div>
+                            </div>                           
+                            
+                          </div>
+
+                        </div>
+                        <div class="col-md-2 col-lg-2"></div>
+                      </div>
+                    </div>
+
+
+                  </div>
+                  <!-- END PAGE CONTENT INNER -->
+              </div>
+          </div>
+            <!-- END PAGE CONTENT BODY -->
+            <!-- END CONTENT BODY -->
+        </div>
+
+        <!-- START MODAL PORTLET-->
+
+        <div class="portlet-body form">  
+
+          <div id="profile_bio1_modal" class="modal fade" tabindex="-1">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+              <h4 class="modal-title" id="profile_bio1_header">Edit Intro</h4>
+            </div>
+
+            <div class="modal-body">
+             <form class="form-horizontal" role="form" id="profile_bio1_form" action="" method="post" enctype="multipart/form-data">
+              <span class="form_submission_error"></span>
+              <span class="form_submission_success"></span>
+
+              <input type="hidden" name="profile_bio1_id"  id="profile_bio1_id" value="0">
+
+              <div class="form-body"> 
+
+                <div class="form-group">
+                  <label class="col-md-3 col-lg-3 col-sm-12 control-label">First Name</label>
+                  <div class="col-md-9 col-lg-9 col-sm-12 ">
+                    <input type="text" name="profile_bio1_firstname" id="profile_bio1_firstname" class="form-control" value="{{user_info.firstname}}">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-3 col-lg-3 col-sm-12 control-label">Last Name</label>
+                  <div class="col-md-9 col-lg-9 col-sm-12 ">
+                    <input type="text" name="profile_bio1_lastname" id="profile_bio1_lastname" class="form-control" value="{{user_info.lastname}}">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-3 col-lg-3 col-sm-12 control-label">Designation</label>
+                  <div class="col-md-9 col-lg-9 col-sm-12 ">
+                    <input type="text" name="profile_bio1_designation" id="profile_bio1_designation" class="form-control" value="{{designation}}">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-3 col-lg-3 col-sm-12 control-label">Location</label>
+                  <div class="col-md-9 col-lg-9 col-sm-12 ">
+                    <input type="text" name="profile_bio1_location" id="profile_bio1_location" class="form-control" value="{{user_info.location}}">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-lg-3 col-sm-12 ">Date of Birth</label>
+                    <div class="col-md-9 col-lg-9 col-sm-12">
+                        <input class="form-control form-control-inline input-medium" type="text" name="profile_bio1_dob" id="profile_bio1_dob" value="{{dob}}" />
+                        <span class="help-block"> Select date </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                <div class="col-md-3 col-lg-3 col-sm-12"></div>
+                <div class="col-md-9 col-lg-9 col-sm-12">
+                  <label for="profile_bio1_displayPic" class="custom-file-upload">
+                    <i class="fa fa-camera"></i> Upload Profile Picture
+                  </label>
+                  <input id="profile_bio1_displayPic" name="profile_bio1_displayPic" type="file" accept="application/x-zip-compressed,image/*"/>
+                </div>
+                  
+                  <!-- <p class="help-block"> Optional </p> -->
+                </div>
+
+                <div class="form-group">
+                  <div class="col-md-3 col-lg-3 col-sm-12"></div>
+                  <div class="col-md-9 col-lg-9 col-sm-12">
+                    <label for="profile_bio1_backgroundPic" class="custom-file-upload">
+                    <i class="fa fa-camera"></i> Upload Background Picture
+                  </label>
+                  <input id="profile_bio1_backgroundPic" name="profile_bio1_backgroundPic" type="file" accept="application/x-zip-compressed,image/*"/>
+                  </div>
+                  
+                </div>
+              </div>
+              <div class="form-actions noborder pull-right">
+                <input type="submit" class="btn blue" name="submit" value="Save" />
+                <button type="button" data-dismiss="modal" class="btn btn-outline dark">Close</button>
+              </div>
+              <div class="clearfix"></div>
+            </form>
+          </div>
+        </div>  
+
+        <!--description modal-->
+        <div id="profile_desc_modal" class="modal fade" tabindex="-1">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+            <h4 class="modal-title" id="profile_desc_header">Edit Description</h4>
+          </div>
+          <div class="modal-body">
+            <form role="form" id="profile_desc_form" action="" method="post">
+              <span class="form_submission_error"></span>
+              <span class="form_submission_success"></span>
+
+              <input type="hidden" name="profile_desc_id"  id="profile_desc_id" value="0">
+
+              <div class="form-group">
+                <textarea name="profile_desc_description" id="profile_desc_description" class="form-control summer_details" rows="3" style="font-size: 1.2em;font-weight: 600">{{user_info.description}}</textarea>
+              </div>
+
+              <div class="form-actions noborder">
+                <input type="submit" class="btn blue" name="submit" value="Save" />
+                <button type="button" data-dismiss="modal" class="btn btn-outline dark">Close</button>
+              </div>
+            </form>
+          </div>
+
+        </div>  
+
+        <!--education modal-->
+        <div id="profile_edu_modal" class="modal fade" tabindex="-1">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+            <h4 class="modal-title" id="profile_edu_header">Edit Education</h4>
+          </div>
+          <div class="modal-body">
+           <form class="form-horizontal" role="form" id="profile_edu_form" action="" method="post">
+              <span class="form_submission_error"></span>
+              <span class="form_submission_success"></span>
+
+              <input type="hidden" name="profile_edu_id"  id="profile_edu_id" >
+              <input type="hidden" name="profile_edu_action"  id="profile_edu_action" >
+
+            <div class="form-body">
+              <div class="form-group">
+                <label class="col-md-2 col-lg-2 col-sm-12 control-label">Title</label>
+                <div class="col-md-9 col-lg-9 col-sm-12 ">
+                  <input type="text" name="profile_edu_title" id="profile_edu_title" class="form-control">
+                </div>
+              </div>
+
+
+              <div class="form-group">
+                <label class="col-md-2 col-lg-2 col-sm-12 control-label">From Year</label>
+                <div class="col-md-9 col-lg-9 col-sm-12">
+                  <select class="form-control" name="profile_edu_from" id="profile_edu_from">
+                    {{#myforloop 1958}}
+                    <option value="{{this}}">{{this}}</option>
+                    {{/myforloop}}
+                  </select>
+
+                </div>
+              </div>              
+
+              <div class="form-group">
+                <label class="col-md-2 col-lg-2 col-sm-12 control-label">To Year</label>
+                <div class="col-md-9 col-lg-9 col-sm-12">
+                  <select class="form-control" name="profile_edu_to" id="profile_edu_to">
+                    {{#myforloop 1958}}
+                    <option value="{{this}}">{{this}}</option>
+                    {{/myforloop}}
+                  </select>
+
+                </div>
+              </div>
+
+            </div>
+            <div class="form-actions">
+              <div class="row">
+                <div class="col-md-offset-3 col-md-9">
+                  <input type="submit" class="btn blue" name="submit" value="Save" />
+                  <button type="button" data-dismiss="modal" class="btn default">Close</button>
+                </div>
+              </div>
+            </div>
+          </form>            
+        </div>
+      </div>  
+
+
+       <!--qualification modal-->
+        <div id="profile_qual_modal" class="modal fade" tabindex="-1">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+            <h4 class="modal-title" id="profile_qual_header">Edit Qualification</h4>
+          </div>
+          <div class="modal-body">
+           <form class="form-horizontal" role="form" id="profile_qual_form" action="" method="post">
+              <span class="form_submission_error"></span>
+              <span class="form_submission_success"></span>
+
+              <input type="hidden" name="profile_qual_id"  id="profile_qual_id" >
+              <input type="hidden" name="profile_qual_action"  id="profile_qual_action" >
+
+            <div class="form-body">
+              <div class="form-group">
+                <label class="col-md-2 col-lg-2 col-sm-12 control-label">Title</label>
+                <div class="col-md-10 col-lg-10 col-sm-12 ">
+                  <input type="text" name="profile_qual_title" id="profile_qual_title" class="form-control">
+                </div>
+              </div>
+
+
+              <div class="form-group">
+                <label class="col-md-2 col-lg-2 col-sm-12 control-label">Year</label>
+                <div class="col-md-10 col-lg-10 col-sm-12">
+                  <select class="form-control" name="profile_qual_year" id="profile_qual_year">
+                    {{#myforloop 1958}}
+                    <option value="{{this}}">{{this}}</option>
+                    {{/myforloop}}
+                  </select>
+
+                </div>
+              </div>
+              
+
+            </div>
+            <div class="form-actions">
+              <div class="row">
+                <div class="col-md-offset-3 col-md-9">
+                  <input type="submit" class="btn blue" name="submit" value="Save" />
+                  <button type="button" data-dismiss="modal" class="btn default">Close</button>
+                </div>
+              </div>
+            </div>
+          </form>            
+        </div>
+      </div>  
+
+
+      <!--schools modal-->
+        <div id="profile_sch_modal" class="modal fade" tabindex="-1">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+            <h4 class="modal-title" id="profile_sch_header">Edit</h4>
+          </div>
+          <div class="modal-body">
+           <form class="form-horizontal" role="form" id="profile_sch_form" action="" method="post">
+              <span class="form_submission_error"></span>
+              <span class="form_submission_success"></span>
+
+              <input type="hidden" name="profile_sch_id"  id="profile_sch_id" >
+              <input type="hidden" name="profile_sch_action"  id="profile_sch_action" >
+
+            <div class="form-body">
+              <div class="form-group">
+                <label class="col-md-2 col-lg-2 col-sm-12 control-label">Title</label>
+                <div class="col-md-10 col-lg-10 col-sm-12 ">
+                  <input type="text" name="profile_sch_title" id="profile_sch_title" class="form-control">
+                </div>
+              </div>          
+              
+
+            </div>
+            <div class="form-actions">
+              <div class="row">
+                <div class="col-md-offset-3 col-md-9">
+                  <input type="submit" class="btn blue" name="submit" value="Save" />
+                  <button type="button" data-dismiss="modal" class="btn default">Close</button>
+                </div>
+              </div>
+            </div>
+          </form>            
+        </div>
+      </div>  
+
+
+      
+
+
+      </div>
+
+        <!-- END MODAL PORTLET-->
+        <!-- END CONTENT -->
+        <!-- BEGIN QUICK SIDEBAR -->
+        <a href="javascript:;" class="page-quick-sidebar-toggler">
+            <i class="icon-login"></i>
+        </a>
+
+        <!-- END QUICK SIDEBAR -->
+    </div>
+    <!-- END CONTAINER -->
+    {{>footer_cms}}
+
+        <script type="text/javascript">
+
+        
+        $( document ).ready( function () {
+
+           
+
+        $( "#profile_bio1_form" ).validate( {/*validate & submit profile bio1 modal data*/
+                rules: {  
+                    profile_bio1_firstname: {
+                        required: true
+                    },
+                    profile_bio1_lastname: {
+                        required: true,
+                    }
+                    
+                },
+                messages: {                        
+                    profile_bio1_firstname: {
+                        required: "This field is required"
+                    },
+                    profile_bio1_lastname: {
+                        required: "This field is required"
+                    }
+                },
+                errorElement: "em",
+                errorPlacement: function ( error, element ) {
+                // Add the `help-block` class to the error element
+                error.addClass( "help-block" );
+
+                if ( element.prop( "type" ) === "checkbox" ) {
+                    error.insertAfter( element.parent( "label" ) );
+                } else {
+                    error.insertAfter( element );
+                }
+            },
+            success: function ( label, element ) {
+                // Add the span element, if doesn't exists, and apply the icon classes to it.
+                if ( !$( element ).next( "span" )[ 0 ] ) {
+                    $( "<span class='glyphicon glyphicon-ok form-control-feedback'></span>" ).insertAfter( $( element ) );
+                }
+            },
+            highlight: function ( element, errorClass, validClass ) {
+                $( element ).parents( ".col-sm-5" ).addClass( "has-error" ).removeClass( "has-success" );
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $( element ).parents( ".col-sm-5" ).addClass( "has-success" ).removeClass( "has-error" );
+            },
+
+            submitHandler: function () {
+                //modify button
+                var sub_button=$("#profile_bio1_form").find(':submit');
+                var old_button_val=sub_button.val();
+                sub_button.prop('disabled', true);
+                sub_button.val('...processing');
+
+                resetFields();
+                var my_url="{{url}}/update_bio1";
+               // console.log(my_url)
+                $("#profile_bio1_form").ajaxSubmit({
+                    url:my_url,
+                       contentType: 'application/json',
+                       success: function(response){
+                        if(response.success==true){
+                               // console.log('image uploaded and form submitted');
+                                $('#profile_bio1_form  .form_submission_success').text(response.msg);
+                                setTimeout(function(){
+                                    $('#profile_bio1_form  .form_submission_success').text('');
+                                    sub_button.val(old_button_val);
+                                    sub_button.prop('disabled', false);
+                                    $('#profile_bio1_modal').modal('hide');
+                                     window.location.href="{{url}}/profile/{{user_info._id}}";
+                                },3000);
+                                
+                            }else{
+                                //console.log('response is false');
+                                $('#profile_bio1_form  .form_submission_error').text(response.msg);
+                                sub_button.val(old_button_val);
+                                sub_button.prop('disabled', false);
+                            }
+                              
+                       },
+                       error:function(xhr, status, err){
+                            // console.log('error');
+                            // console.log(xhr);
+                            // console.log(status);
+                            // console.log(err);
+                        }
+                   });
+                
+            }
+            } );
+
+
+          
+
+        $("#profile_desc_form").validate( {/*validate & submit profile description modal data*/
+                // rules: {  
+                //     profile_desc_description: {
+                //         required: true
+                //     }
+                    
+                // },
+                // messages: {                        
+                //     profile_bio1_firstname: {
+                //         required: "This field is required"
+                //     }
+                // },
+                errorElement: "em",
+                errorPlacement: function ( error, element ) {
+                // Add the `help-block` class to the error element
+                error.addClass( "help-block" );
+
+                if ( element.prop( "type" ) === "checkbox" ) {
+                    error.insertAfter( element.parent( "label" ) );
+                } else {
+                    error.insertAfter( element );
+                }
+            },
+            success: function ( label, element ) {
+                // Add the span element, if doesn't exists, and apply the icon classes to it.
+                if ( !$( element ).next( "span" )[ 0 ] ) {
+                    $( "<span class='glyphicon glyphicon-ok form-control-feedback'></span>" ).insertAfter( $( element ) );
+                }
+            },
+            highlight: function ( element, errorClass, validClass ) {
+                $( element ).parents( ".col-sm-5" ).addClass( "has-error" ).removeClass( "has-success" );
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $( element ).parents( ".col-sm-5" ).addClass( "has-success" ).removeClass( "has-error" );
+            },
+
+            submitHandler: function () {
+                //modify button
+                var sub_button=$("#profile_desc_form").find(':submit');
+                var old_button_val=sub_button.val();
+                sub_button.prop('disabled', true);
+                sub_button.val('...processing');
+
+                resetFields();
+                var my_url="{{url}}/update_desc";
+                console.log(my_url);
+                
+                $("#profile_desc_form").ajaxSubmit({
+                    url:my_url,
+                       // contentType: 'application/json',
+                       success: function(response){
+                        if(response.success==true){
+                                console.log('image uploaded and form submitted');
+                                $('#profile_desc_form  .form_submission_success').text(response.msg);
+                                setTimeout(function(){
+                                    $('#profile_desc_form  .form_submission_success').text('');
+                                    sub_button.val(old_button_val);
+                                    sub_button.prop('disabled', false);
+                                    $('#profile_desc_modal').modal('hide');
+                                     window.location.href="{{url}}/profile/{{user_info._id}}";
+                                },3000);
+                                
+                            }else{
+                                console.log('response is false');
+                                $('#profile_desc_form  .form_submission_error').text(response.msg);
+                                sub_button.val(old_button_val);
+                                sub_button.prop('disabled', false);
+                            }
+                              
+                       },
+                       error:function(xhr, status, err){
+                            console.log('error');
+                            console.log(xhr);
+                            console.log(status);
+                            console.log(err);
+                        }
+                   });
+                
+              }
+            } );
+
+
+        $("#profile_edu_form").validate( {/*validate & submit profile education modal data*/
+                // rules: {  
+                //     profile_edu_description: {
+                //         required: true
+                //     }
+                    
+                // },
+                // messages: {                        
+                //     profile_bio1_firstname: {
+                //         required: "This field is required"
+                //     }
+                // },
+                errorElement: "em",
+                errorPlacement: function ( error, element ) {
+                // Add the `help-block` class to the error element
+                error.addClass( "help-block" );
+
+                if ( element.prop( "type" ) === "checkbox" ) {
+                    error.insertAfter( element.parent( "label" ) );
+                } else {
+                    error.insertAfter( element );
+                }
+            },
+            success: function ( label, element ) {
+                // Add the span element, if doesn't exists, and apply the icon classes to it.
+                if ( !$( element ).next( "span" )[ 0 ] ) {
+                    $( "<span class='glyphicon glyphicon-ok form-control-feedback'></span>" ).insertAfter( $( element ) );
+                }
+            },
+            highlight: function ( element, errorClass, validClass ) {
+                $( element ).parents( ".col-sm-5" ).addClass( "has-error" ).removeClass( "has-success" );
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $( element ).parents( ".col-sm-5" ).addClass("has-success" ).removeClass( "has-error" );
+            },
+
+            submitHandler: function () {
+                //modify button
+                var sub_button=$("#profile_edu_form").find(':submit');
+                var old_button_val=sub_button.val();
+                sub_button.prop('disabled', true);
+                sub_button.val('...processing');
+
+                resetFields();
+                var my_url="{{url}}/update_edu";
+                console.log(my_url);
+                
+                $("#profile_edu_form").ajaxSubmit({
+                    url:my_url,
+                       // contentType: 'application/json',
+                       success: function(response){
+                        if(response.success==true){
+                                console.log(' form submitted');
+                                $('#profile_edu_form  .form_submission_success').text(response.msg);
+                                setTimeout(function(){
+                                    $('#profile_edu_form  .form_submission_success').text('');
+                                    sub_button.val(old_button_val);
+                                    sub_button.prop('disabled', false);
+                                    $('#profile_edu_modal').modal('hide');
+                                     window.location.href="{{url}}/profile/{{user_info._id}}";
+                                },3000);
+                                
+                            }else{
+                                console.log('response is false');
+                                $('#profile_edu_form  .form_submission_error').text(response.msg);
+                                sub_button.val(old_button_val);
+                                sub_button.prop('disabled', false);
+                            }
+                              
+                       },
+                       error:function(xhr, status, err){
+                            console.log('error');
+                            console.log(xhr);
+                            console.log(status);
+                            console.log(err);
+                        }
+                   });
+                
+              }
+            } );
+
+        $("#profile_qual_form").validate( {/*validate & submit profile qualifications modal data*/
+                // rules: {  
+                //     profile_qual_description: {
+                //         required: true
+                //     }
+                    
+                // },
+                // messages: {                        
+                //     profile_bio1_firstname: {
+                //         required: "This field is required"
+                //     }
+                // },
+                errorElement: "em",
+                errorPlacement: function ( error, element ) {
+                // Add the `help-block` class to the error element
+                error.addClass( "help-block" );
+
+                if ( element.prop( "type" ) === "checkbox" ) {
+                    error.insertAfter( element.parent( "label" ) );
+                } else {
+                    error.insertAfter( element );
+                }
+            },
+            success: function ( label, element ) {
+                // Add the span element, if doesn't exists, and apply the icon classes to it.
+                if ( !$( element ).next( "span" )[ 0 ] ) {
+                    $( "<span class='glyphicon glyphicon-ok form-control-feedback'></span>" ).insertAfter( $( element ) );
+                }
+            },
+            highlight: function ( element, errorClass, validClass ) {
+                $( element ).parents( ".col-sm-5" ).addClass( "has-error" ).removeClass( "has-success" );
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $( element ).parents( ".col-sm-5" ).addClass("has-success" ).removeClass( "has-error" );
+            },
+
+            submitHandler: function () {
+                //modify button
+                var sub_button=$("#profile_qual_form").find(':submit');
+                var old_button_val=sub_button.val();
+                sub_button.prop('disabled', true);
+                sub_button.val('...processing');
+
+                resetFields();
+                var my_url="{{url}}/update_qual";
+                console.log(my_url);
+                
+                $("#profile_qual_form").ajaxSubmit({
+                    url:my_url,
+                       // contentType: 'application/json',
+                       success: function(response){
+                        if(response.success==true){
+                                console.log(' form submitted');
+                                $('#profile_qual_form  .form_submission_success').text(response.msg);
+                                setTimeout(function(){
+                                    $('#profile_qual_form  .form_submission_success').text('');
+                                    sub_button.val(old_button_val);
+                                    sub_button.prop('disabled', false);
+                                    $('#profile_qual_modal').modal('hide');
+                                     window.location.href="{{url}}/profile/{{user_info._id}}";
+                                },3000);
+                                
+                            }else{
+                                console.log('response is false');
+                                $('#profile_qual_form  .form_submission_error').text(response.msg);
+                                sub_button.val(old_button_val);
+                                sub_button.prop('disabled', false);
+                            }
+                              
+                       },
+                       error:function(xhr, status, err){
+                            console.log('error');
+                            console.log(xhr);
+                            console.log(status);
+                            console.log(err);
+                        }
+                   });
+                
+              }
+            } );
+
+
+        $("#profile_sch_form").validate( {/*validate & submit profile school modal data*/
+                // rules: {  
+                //     profile_sch_description: {
+                //         required: true
+                //     }
+                    
+                // },
+                // messages: {                        
+                //     profile_bio1_firstname: {
+                //         required: "This field is required"
+                //     }
+                // },
+                errorElement: "em",
+                errorPlacement: function ( error, element ) {
+                // Add the `help-block` class to the error element
+                error.addClass( "help-block" );
+
+                if ( element.prop( "type" ) === "checkbox" ) {
+                    error.insertAfter( element.parent( "label" ) );
+                } else {
+                    error.insertAfter( element );
+                }
+            },
+            success: function ( label, element ) {
+                // Add the span element, if doesn't exists, and apply the icon classes to it.
+                if ( !$( element ).next( "span" )[ 0 ] ) {
+                    $( "<span class='glyphicon glyphicon-ok form-control-feedback'></span>" ).insertAfter( $( element ) );
+                }
+            },
+            highlight: function ( element, errorClass, validClass ) {
+                $( element ).parents( ".col-sm-5" ).addClass( "has-error" ).removeClass( "has-success" );
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $( element ).parents( ".col-sm-5" ).addClass("has-success" ).removeClass( "has-error" );
+            },
+
+            submitHandler: function () {
+                //modify button
+                var sub_button=$("#profile_sch_form").find(':submit');
+                var old_button_val=sub_button.val();
+                sub_button.prop('disabled', true);
+                sub_button.val('...processing');
+
+                resetFields();
+                var my_url="{{url}}/update_sch";
+                console.log(my_url);
+                
+                $("#profile_sch_form").ajaxSubmit({
+                    url:my_url,
+                       // contentType: 'application/json',
+                       success: function(response){
+                        if(response.success==true){
+                                console.log(' form submitted');
+                                $('#profile_sch_form  .form_submission_success').text(response.msg);
+                                setTimeout(function(){
+                                    $('#profile_sch_form  .form_submission_success').text('');
+                                    sub_button.val(old_button_val);
+                                    sub_button.prop('disabled', false);
+                                    $('#profile_sch_modal').modal('hide');
+                                     window.location.href="{{url}}/profile/{{user_info._id}}";
+                                },3000);
+                                
+                            }else{
+                                console.log('response is false');
+                                $('#profile_sch_form  .form_submission_error').text(response.msg);
+                                sub_button.val(old_button_val);
+                                sub_button.prop('disabled', false);
+                            }
+                              
+                       },
+                       error:function(xhr, status, err){
+                            console.log('error');
+                            console.log(xhr);
+                            console.log(status);
+                            console.log(err);
+                        }
+                   });
+                
+              }
+            } );
+
+
+        $('body').on('click','.edit_icon',function(){
+          $this=$(this);
+          var title= $this.parents('.profile_subitem').find('.profile_text_body .profile_text_title').text();
+          console.log('title '+title);
+          var from = $this.parents('.profile_subitem').find('.profile_text_body .profile_text_duration .from_year').text();
+          console.log('from '+from);
+          var to = $this.parents('.profile_subitem').find('.profile_text_body .profile_text_duration .to_year').text();
+          console.log('to '+to);
+          var subitem_id = $this.parents('.profile_subitem').find('.subitem_id').val();
+
+          $('#profile_edu_modal').modal({backdrop: false, keyboard: false});
+          $('#profile_edu_header').text('Edit');
+          $('#profile_edu_title').val(title);
+          $('#profile_edu_from').val(from);
+          $('#profile_edu_to').val(to);
+          $('#profile_edu_action').val('edit');
+          $('#profile_edu_id').val(subitem_id);
+        });
+
+
+
+        $('body').on('click','.edit_qual_icon',function(){
+          $this=$(this);
+          var title= $this.parents('.profile_subitem').find('.profile_text_body .profile_text_title').text();
+          console.log('title '+title);
+          var year = $this.parents('.profile_subitem').find('.profile_text_body .profile_text_duration .year').text();
+          console.log('year '+year);
+          var subitem_id = $this.parents('.profile_subitem').find('.subitem_id').val();
+          
+          $('#profile_qual_modal').modal({backdrop: false, keyboard: false});
+          $('#profile_qual_header').text('Edit');
+          $('#profile_qual_title').val(title);
+          $('#profile_qual_year').val(year);
+          $('#profile_qual_action').val('edit');
+          $('#profile_qual_id').val(subitem_id);
+        });
+
+
+
+        $('body').on('click','.edit_sch_icon',function(){
+          $this=$(this);
+          var title= $this.parents('.profile_subitem').find('.profile_text_body .profile_text_title').text();
+          console.log('title '+title);
+          var year = $this.parents('.profile_subitem').find('.profile_text_body .profile_text_duration .year').text();
+          console.log('year '+year);
+          var subitem_id = $this.parents('.profile_subitem').find('.subitem_id').val();
+          
+          $('#profile_sch_modal').modal({backdrop: false, keyboard: false});
+          $('#profile_sch_header').text('Edit');
+          $('#profile_sch_title').val(title);
+          $('#profile_sch_action').val('edit');
+          $('#profile_sch_id').val(subitem_id);
+        });
+
+
+        // Configure/customize these variables.
+    var showChar = 250;  // How many characters are shown by default
+    var ellipsestext = "...";
+    var moretext = "See more";
+    var lesstext = "See less";
+    
+
+    $('.more').each(function() {
+        var content = $(this).html();
+
+        if(content.length > showChar) {
+
+            var c = content.substr(0, showChar);
+            var h = content.substr(showChar, content.length - showChar);
+
+            var html = c + '<span class="moreellipses">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<div style="width:100%;padding:2%;"><button type="button" style="margin:0 auto;color: #86be25;" class="morelink btn btn-default">' + moretext + '</button></div></span>';
+
+            $(this).html(html);
+        }
+
+    });
+
+    $(".morelink").click(function(){
+        if($(this).hasClass("less")) {
+            $(this).removeClass("less");
+            $(this).html(moretext);
+            $(this).parents('.more').find('.moreellipses').text("...");
+
+        } else {
+            $(this).addClass("less");
+            $(this).html(lesstext);
+            $(this).parents('.more').find('.moreellipses').text("");
+        }
+        $(this).parent().prev().toggle();
+        $(this).prev().toggle();
+        return false;
+    });
+
+
+    $('.profile_text_section.multiple .profile_text_body_icons .action_icons.hide_edit_icons').hover(
+    function() {
+        $('.profile_text_section.multiple .profile_text_body_icons .action_icons.hide_edit_icons img').fadeIn('slow');
+    },function() {
+        $('.profile_text_section.multiple .profile_text_body_icons .action_icons.hide_edit_icons img').fadeOut('slow');
+      }
+      );
+
+
+
+        
+
+            });
+
+            </script>
+
+
+    </body>
+
+</html>

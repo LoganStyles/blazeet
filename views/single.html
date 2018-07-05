@@ -1,0 +1,581 @@
+{{>header_member}}
+
+<!-- BEGIN CONTAINER -->
+        <div class="page-container" style="margin-top: 12%;">
+            <!-- BEGIN CONTENT -->
+            <div class="page-content-wrapper">
+                <!-- BEGIN CONTENT BODY -->
+                <!-- BEGIN PAGE HEAD-->
+                <div class="page-head">  </div>
+                <!-- END PAGE HEAD-->
+                <!-- BEGIN PAGE CONTENT BODY -->
+                <div class="page-content">
+                    <div class="container-fluid">
+
+                        <!-- BEGIN PAGE CONTENT INNER -->
+                        <div class="page-content-inner">                            
+                            <!-- BEGIN MODALS FOR EDIT-->
+
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="col-md-3">
+                                        <!-- BEGIN PROFILE SIDEBAR -->
+                                        <div class="profile-sidebar">
+                                            
+                                            <!-- <div class="portlet light ">                                    
+                                                <div>
+                                                    <h3 class="profile-desc-title">Advert</h3>
+                                                </div>
+                                            </div> -->
+                                            <!-- END PORTLET MAIN -->
+                                        </div>
+                                        <!-- END BEGIN PROFILE SIDEBAR -->
+                                    </div>
+
+        <div class="col-md-6">                                        
+            <!-- BEGIN PORTLET -->
+            <div class="panel panel-default portlet">
+              <div class="panel-body" style="width: 100%;">
+                <div class="posts_top_actions_left">
+                    <span class="posts_page_title">{{page_title}}</span>
+                </div>
+                
+                <div class="posts_top_actions_right">
+                    <a class="page_top_actions" onclick="modalLoader('question','new','');">Ask a question</a>&nbsp;|&nbsp;
+
+                    <a class="page_top_actions" onclick="modalLoader('article','new','');">Write an article</a>&nbsp;|&nbsp;
+
+                    <a class="page_top_actions" onclick="modalLoader('riddle','new','');">Post a riddle</a>&nbsp;|&nbsp;
+
+                    <a class="page_top_actions" onclick="modalLoader('pab','new','');">Post a book</a>
+                   
+                </div>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+
+            <div class="post_responses question_all_post_area {{class_type}}">
+
+            {{#each data}}
+
+             <div class="portlet light posted">
+             <input type="hidden" id="post_id" value="{{_id}}">
+             <input type="hidden" id="post_type" value="{{../page_type}}">
+
+                <div class="portlet-title">
+                    <div class="caption caption-md">
+                        
+                        <span class="caption-subject  bold post_box_name">{{../page_type}}</span>
+                        {{#if category}}
+                        <span class="caption-helper post_category grey_cats left_border">{{category}}</span>
+                        {{/if}}
+
+                        {{#if sub_cat1}}
+                        <span class="caption-helper post_sub_cat1 grey_cats left_border">{{sub_cat1}}</span>
+                        {{/if}}
+
+                        {{#if sub_cat2}}
+                        <span class="caption-helper post_sub_cat2 grey_cats left_border">{{sub_cat2}}</span>
+                        {{/if}}
+                        
+                    </div>                       
+                </div>
+                <div class="portlet-body">
+                    <div class="" data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2">
+                        <div class="general-item-list">
+                            <div class="item">
+                                <div class="item-head">
+
+                                <div style="width: 100%;"><!--main block-->
+                                    <div class="posts_partition"><!--1st partition-->
+                                        <div style="width: 100%;">
+                                            <div class="section_posts_avatar">
+                                             <img class="icon_size_50 img-circle" src="{{../url}}/{{owner.displayPic}}">
+                                         </div>
+                                         <div class="section_posts_text">
+                                            <div> 
+                                               <a style="font-weight: 600;" href="" class="item-name">{{owner.displayName}}</a>
+                                           </div>
+                                           {{#if owner.status}}
+                                           <div class="post_item_body_status">
+                                            {{owner.status}}
+                                            </div>
+                                        {{/if}}
+
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="posts_partition_middle"><!--2nd partition-->
+                                    <span>
+                                        {{#if trend_status}}<!--trend post-->
+                                                {{#if trend_followed}}
+                                                    <img class="icon_size_50 " src="{{../url}}/images/filler.png">
+                                                {{else}}
+                                                <a href="javascript:;" class="btn blue" style="padding: 2px;">
+                                                    <i class="fa fa-plus"></i>&nbsp; Follow</a>
+
+                                                {{/if}}
+                                        {{else}}<!--other post:questio etc-->
+                                                {{#if (eq friend_status 'friend')}}
+                                                    <img class="" src="{{../url}}/images/filler.png">
+                                                    {{else}}
+                                                        {{#if (eq friend_status 'Pending')}}
+                                                        <span class="post_box_name">Pending Friend Request</span>
+                                                        {{else}}
+                                                        <img class="icon_size_20 send_friend_req" src="{{../url}}/images/add_person.png">
+                                                    {{/if}}
+                                                {{/if}}
+
+                                        {{/if}}
+                                                    
+                                    </span>
+                                </div>
+
+                                    <div class="posts_partition"><!--3rd partition-->
+                                        <div class="pull-right">
+                                            <div class="fromnow">{{moment post_date "fromNow"}}</div>
+                                            <div class="clearfix"></div>
+                                            <div class="post_actions_button_left"> </div>
+                                             {{#if post_owner}}
+                                                 <div class="actions post_actions_button">
+                                                        <div class="btn-group">
+                                                            <span class="item-status cursor_dropper" data-toggle="dropdown">
+                                                                <i class="fa fa-ellipsis-h"></i>
+                                                            </span>
+                                                            <ul class="dropdown-menu pull-right">
+                                                                <li class="edit_section_item">
+                                                                    <a href="javascript:;">
+                                                                        <i class="fa fa-pencil"></i> Edit </a>
+                                                                </li>
+                                                                <li class="delete_section_item">
+                                                                    <a href="javascript:;">
+                                                                        <i class="fa fa-trash-o"></i> Delete </a>
+                                                                </li>
+
+                                                                {{#if question_status}}
+                                                <li class="new_request_item">
+                                                    <a href="javascript:;">
+                                                        <i class="fa fa-ban"></i> Request for answer </a>
+                                                </li>  
+                                                {{/if}}
+
+                                                {{#if art_status}}
+                                                <li class="new_request_item">
+                                                    <a href="javascript:;">
+                                                        <i class="fa fa-ban"></i> Request for review </a>
+                                                </li>  
+                                                {{/if}} 
+
+                                                {{#if riddle_status}}
+                                                <li class="new_request_item">
+                                                    <a href="javascript:;">
+                                                        <i class="fa fa-ban"></i> Request for solution </a>
+                                                </li>  
+                                                {{/if}} 
+                                                                          
+                                                            </ul>
+                                                        </div>                                           
+                                                </div>
+                                                {{else}}
+                                                <div class="actions post_actions_button">
+                                                        <div class="btn-group">
+                                                            <span class="item-status cursor_dropper" data-toggle="dropdown">
+                                                                <i class="fa fa-ellipsis-h"></i>
+                                                            </span>
+                                                            <ul class="dropdown-menu pull-right">
+                                                                 {{#if followed_post}}
+                                            <li class="un_follow_section_item">
+                                                    <a href="javascript:;">
+                                                        <i class="fa fa-minus-square"></i> Unfollow </a>
+                                                </li>
+                                                
+                                            {{else}}
+                                                <li class="follow_section_item">
+                                                    <a href="javascript:;">
+                                                        <i class="fa fa-plus-square"></i> Follow </a>
+                                                </li>
+                                            {{/if}}
+                                                                {{#unless bookmarked_post}}
+                                                                <li class="bookmark_section_item">
+                                                                    <a href="javascript:;">
+                                                                        <i class="fa fa-bookmark"></i> Bookmark </a>
+                                                                </li>
+                                                                {{/unless}}
+                                                                <li class="">
+                                                    <a href="javascript:;">
+                                                        <img class="icon_size_20" src="{{../url}}/images/mask.png"> Mask </a>
+                                                </li>
+                                                                <li>
+                                                                    <a href="javascript:;">
+                                                                        <i class="fa fa-ban"></i> Report Abuse </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>                                           
+                                                </div>
+                                                {{/if}}
+                                        </div><!--end float right-->
+                                        <div class="clearfix"></div>
+                                    </div>
+
+                                <div class="clearfix"></div>
+                                </div>                                      
+                                    
+
+                                </div>
+
+                                <div class="item-body"> 
+                                   
+                                    {{#if pics.length }}
+                                        <div style="margin-bottom: 3%;">                                                                 
+                                            <img class="img-responsive" src="{{url}}/{{pics}}">
+                                        </div>
+                                    {{/if}}
+
+                                    {{#if body}}
+                                        <div class="post_item post_item_topic">
+                                            {{{body}}}
+                                        </div><hr>
+                                    {{/if}}
+                                        <div class="post_item post_item_body">
+                                            {{{description}}}
+                                        </div>
+                                    
+                                </div>  <br>
+
+                                    <div style="width: 100%;"><!--main block-->
+                                    
+
+                                        <div class="posts_partition_right"><!--3rd partition-->
+
+                                            <a class="btn btn-link">
+                                                <span class="grey_button">
+                                                    <span class="social_value">{{views}}</span>&nbsp;
+                                                    Views
+                                                </span>
+                                            </a>
+
+                                        </div>
+
+                                    <div class="clearfix"></div>
+                                </div>
+                                <!-- <hr> -->
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                    <!-- END PORTLET -->
+                     <div class="response_votes div_vote_comments">
+                        <input type="hidden" id="post_response_id" value="{{_id}}">
+
+                        <a class="btn btn-link post_upvotes" >
+                        <span class="grey_button">
+                            <span class="social_value">{{upvotes.length}}</span>
+                            <img class="icon_size_20" src="{{../../url}}/images/upvotes.png">&nbsp;
+                            Upvotes
+                        </span>
+                        </a>
+
+                        <a class="btn btn-link post_downvotes" >
+                            <span class="grey_button">
+                                <span class="social_value">{{downvotes.length}}</span>
+                                <img class="icon_size_20" src="{{../../url}}/images/downvotes.png">
+                                Downvotes
+                            </span>
+                        </a>
+
+                        <a class="btn btn-link" href="{{../../url}}/posts/getComments/{{../post_type}}/{{../_id}}/0">
+                            <span class="grey_button">
+                                <span class="social_value">{{comments.length}}</span>
+                                <img class="icon_size_20" src="{{../../url}}/images/comments.png">&nbsp;Comments
+                            </span>
+                        </a>
+                    </div>
+
+                    <div class="div_other_add_buttons">
+                        <a href="{{../url}}/posts/section/{{../data_item}}/all_{{category}}/{{_id}}">
+                        <div class="other_add_buttons">
+                            View Related Trends                            
+                        </div>
+                        </a>
+
+                    </div>
+                    <div class="clearfix"></div>
+
+                        
+                </div>
+            {{/each}}
+            </div>
+
+
+        </div>
+
+                                    <div class="col-md-3"><!--third-->
+                                        <div class="row">
+                                            <!-- BEGIN PORTLET -->
+                                            <!-- <div class="portlet light "> -->
+                                                <!-- <div class="portlet-title tabbable-line">
+                                                    <div class="caption caption-md">
+                                                        <i class="icon-globe theme-font hide"></i>
+                                                        <span class="caption-subject font-blue-madison bold uppercase">See What is Trending Now</span>
+                                                    </div>
+
+                                                </div> -->
+                                                <!-- <div class="portlet-body"> -->
+                                                    <!--BEGIN TABS-->
+                                                    <!-- <div class="tab-content">
+                                                        <div class="tab-pane active" id="tab_1_1">
+                                                            <div class="scroller" style="height: 320px;" data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2">
+                                                                <ul class="feeds">
+                                                                    <li>
+                                                                        <div class="col1">
+                                                                            <div class="cont">
+                                                                                <div class="cont-col1">
+                                                                                    <div class="label label-sm label-success">
+                                                                                        <i class="fa fa-bullhorn"></i>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="cont-col2">
+                                                                                    <div class="desc"> Tech industry gets new valuation today ...(more) </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col2">
+                                                                            <div class="date"> - Technology </div>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li>
+                                                                        <div class="col1">
+                                                                            <div class="cont">
+                                                                                <div class="cont-col1">
+                                                                                    <div class="label label-sm label-success">
+                                                                                        <i class="fa fa-bullhorn"></i>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="cont-col2">
+                                                                                    <div class="desc"> Uber's Founder Tranck kalanics resigned today...(more) </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col2">
+                                                                            <div class="date"> - Startups </div>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li>
+                                                                        <div class="col1">
+                                                                            <div class="cont">
+                                                                                <div class="cont-col1">
+                                                                                    <div class="label label-sm label-success">
+                                                                                        <i class="fa fa-bullhorn"></i>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="cont-col2">
+                                                                                    <div class="desc"> 2 young Nigerian start-ups get funding...(more) </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col2">
+                                                                            <div class="date"> - Startups </div>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li>
+                                                                        <div class="col1">
+                                                                            <div class="cont">
+                                                                                <div class="cont-col1">
+                                                                                    <div class="label label-sm label-success">
+                                                                                        <i class="fa fa-bullhorn"></i>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="cont-col2">
+                                                                                    <div class="desc">Trump visits France for G20 Summit...(more) </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col2">
+                                                                            <div class="date"> - Politics </div>
+                                                                        </div>
+                                                                    </li>                                                               
+
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+
+                                                    </div> -->
+                                                    <!--END TABS-->
+                                                <!-- </div> -->
+                                            </div>
+                                            <!-- END PORTLET -->
+                                        </div>
+
+                                        <div class="row">
+                                            <!-- BEGIN PORTLET -->
+                                            <!-- <div class="portlet light  tasks-widget">
+                                                <div class="portlet-title">
+                                                    <div class="caption caption-md">
+                                                        <i class="icon-bar-chart theme-font hide"></i>
+                                                        <span class="caption-subject font-blue-madison bold uppercase">Check Domiit's Experts</span>
+                                                    </div>
+                                                </div>
+                                                <div class="portlet-body">
+                                                    <div class="task-content">
+                                                        <div class="scroller" style="height: 282px;" data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2">
+                                                            <ul class="task-list">
+                                                                <li>
+                                                                    <div class="task-checkbox">
+                                                                        <input type="hidden" value="1" name="test" />
+                                                                        <input type="checkbox" class="liChild" name="test" /> </div>
+                                                                    <div class="task-title">
+                                                                        <span class="task-title-sp"> Dr. Samuel Joseph </span>
+                                                                        <span class="label label-sm label-success">Follow</span>
+
+                                                                    </div>
+
+                                                                </li>
+                                                                <li>
+                                                                    <div class="task-checkbox">
+                                                                        <input type="checkbox" class="liChild" value="" /> </div>
+                                                                    <div class="task-title">
+                                                                        <span class="task-title-sp"> Mr. Jonathan Eboh </span>
+                                                                        <span class="label label-sm label-success">Follow</span>
+                                                                    </div>                                                                
+                                                                </li>
+                                                                <li>
+                                                                    <div class="task-checkbox">
+                                                                        <input type="checkbox" class="liChild" value="" /> </div>
+                                                                    <div class="task-title">
+                                                                        <span class="task-title-sp"> Bellow Umaru </span>
+                                                                        <span class="label label-sm label-success">Follow</span>
+
+                                                                    </div>
+                                                                </li>
+                                                                <li>
+                                                                    <div class="task-checkbox">
+                                                                        <input type="checkbox" class="liChild" value="" /> </div>
+                                                                    <div class="task-title">
+                                                                        <span class="task-title-sp"> Titus Bradley </span>
+                                                                        <span class="label label-sm label-success">Follow</span>
+                                                                    </div>
+                                                                </li>
+
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="task-footer">
+                                                        <div class="btn-arrow-link pull-right">
+                                                            <a href="javascript:;">See All Tasks</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> -->
+                                        </div>
+
+                                        <!-- <div class="row">
+                                            <div class="portlet light  tasks-widget">
+                                                <div class="portlet-title">
+                                                    <div class="caption caption-md">
+                                                        <i class="icon-bar-chart theme-font hide"></i>
+                                                        <span class="caption-subject font-blue-madison bold uppercase">Adverts</span>
+                                                    </div>
+                                                </div>
+                                                <div class="portlet-body">
+                                                    <div class="task-content">
+                                                        <div class="scroller" style="height: 282px;" data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> -->
+
+                                    </div>  
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END PAGE CONTENT INNER -->
+                    </div>
+                </div>
+                <!-- END PAGE CONTENT BODY -->
+                <!-- END CONTENT BODY -->
+            </div>
+
+            <!-- START MODAL PORTLET-->
+
+            <div class="portlet-body form">  
+
+            <!-- <div id="section_response_modal" class="modal fade" tabindex="-1">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                        <h4 class="modal-title" id="section_response_header">{{page_response}}</h4>
+                    </div>
+                    <div class="modal-body">
+                 <form role="form" id="section_response_form" action="" method="post" enctype="multipart/form-data">
+                        <span class="form_submission_error"></span>
+                        <span class="form_submission_success"></span>
+
+                            <input type="hidden" name="section_response_id"  id="section_response_id" >
+                            <input type="hidden" name="section_response_type"  id="section_response_type" >
+
+                            <div class="post_item_topic" id="section_response_topic"></div>
+                            <div class="post_item_body" id="section_response_body"></div>
+                            <div class="post_item_more_info" id="section_response_more_info"></div>                           
+
+                            <div class="form-group">
+                                <textarea  name="section_response_details" id="section_response_details" class="form-control" rows="3" style="font-weight: 500"></textarea>
+                                <label for="form_control_1">
+                                <i class="fa fa-edit"></i>&nbsp;Write your {{page_response}}</label>
+                            </div>
+                            
+
+                             <div class="form-group">
+                             <label for="section_response_photo" class="custom-file-upload">
+                                    <i class="fa fa-camera"></i> Add Photo
+                                </label>
+                                <input id="section_response_photo" name="section_response_photo" type="file" accept="application/x-zip-compressed,image/*"/>
+                                <p class="help-block"> Optional </p>
+                            </div>
+                            <div class="form-actions noborder">
+                                <input type="submit" class="btn blue" name="submit" value="Answer" />
+                                <button type="button" data-dismiss="modal" class="btn btn-outline dark">Close</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div> -->
+               
+            </div>
+
+
+            <!-- END MODAL PORTLET-->
+            <!-- END CONTENT -->
+            <!-- BEGIN QUICK SIDEBAR -->
+            <a href="javascript:;" class="page-quick-sidebar-toggler">
+                <i class="icon-login"></i>
+            </a>
+
+            <!-- END QUICK SIDEBAR -->
+        </div>
+        <!-- END CONTAINER -->
+        {{>footer_cms}}
+
+        <script type="text/javascript">
+
+            $( document ).ready( function () {
+
+                
+            });
+
+            </script>
+
+
+    </body>
+
+</html>

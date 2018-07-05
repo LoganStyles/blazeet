@@ -1,0 +1,304 @@
+{{>header_member}}
+
+<!-- BEGIN CONTAINER -->
+        <div class="page-container">
+            <!-- BEGIN CONTENT -->
+            <div class="page-content-wrapper">
+                <!-- BEGIN CONTENT BODY -->
+                <!-- BEGIN PAGE HEAD-->
+                <div class="page-head">  </div>
+                <!-- END PAGE HEAD-->
+                <!-- BEGIN PAGE CONTENT BODY -->
+                <div class="page-content">
+                    <div class="container-fluid">
+
+                        <!-- BEGIN PAGE CONTENT INNER -->
+                        <div class="page-content-inner">                            
+                            <!-- BEGIN MODALS FOR EDIT-->
+
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="col-md-3" style="padding-right: 0px;">
+                                        <!-- BEGIN PROFILE SIDEBAR -->
+                                        <div class="profile-sidebar">
+                                            <!-- PORTLET MAIN -->
+                                            <div class="portlet light profile-sidebar-portlet ">
+
+                                                <!-- SIDEBAR MENU -->
+                                                <div class="profile-usermenu">
+                                                    <ul class="nav">
+                                                        <li class="active">
+                                                            <a href="{{url}}/posts/getRequests">
+                                                            
+                                                            <img alt="" class="icon_size" src="{{url}}/images/my_requests.png">
+                                                                My Requests ({{req_count}})</a>
+                                                                <hr class="long_length">
+                                                            </li>
+                                                            
+                                                                <li>
+                                                                    <a href="{{url}}/posts/get_bookmarked" style="margin-left: 2px;">
+                                                                        <img alt="" class="icon_size" src="{{url}}/images/my_bookmarked_items.png"> My Bookmarked Items ({{bookmarks_count}})</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <!-- END MENU -->
+                                                        </div>
+                                                        <!-- END PORTLET MAIN -->
+                                                        <!-- PORTLET MAIN -->
+                                                        <div class="portlet light ">                                    
+                                                            <div>
+                                                                <h3 class="profile-desc-title">Advert</h3>
+                                                            </div>
+                                                        </div>
+                                                        <!-- END PORTLET MAIN -->
+                                                    </div>
+                                                    <!-- END BEGIN PROFILE SIDEBAR -->
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                   
+            <div class="panel panel-default portlet">
+              <div class="panel-body" style="width: 100%;">
+              <div class="posts_top_actions_left">
+                    <span class="posts_page_title">My Feeds</span>
+                </div>
+                                
+                <div class="posts_top_actions_right">
+                    <a class="page_top_actions" onclick="modalLoader('question','new','');">Ask a question</a>&nbsp;|&nbsp;
+
+                    <a class="page_top_actions" onclick="modalLoader('article','new','');">Write an article</a>&nbsp;|&nbsp;
+
+                    <a class="page_top_actions" onclick="modalLoader('riddle','new','');">Post a riddle</a>&nbsp;|&nbsp;
+
+                    <a class="page_top_actions" onclick="modalLoader('pab','new','');">Post a book</a>
+                   
+                </div>
+                <div class="clearfix"></div>
+              </div>
+            </div>   
+
+                                                    
+
+        <div class="question_all_post_area {{class_type}}"> 
+               {{>posts_dashboard}}
+
+        </div><!--end question_all_post_area-->
+
+
+</div><!--end col-md-6-->
+
+        <div class="col-md-3"><!--third-->
+        <div class="row">
+            <!-- BEGIN PORTLET -->
+            <div class="portlet light ">
+                <div class="portlet-title tabbable-line">
+                    <div class="caption caption-md">
+                        <i class="icon-globe theme-font hide"></i>
+                        <span class="caption-subject font-blue-madison bold uppercase">See What is Trending Now</span>
+                    </div>
+
+                </div>
+                <div class="portlet-body">
+                    <!--BEGIN TABS-->
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab_1_1">
+                            <div class="scroller" style="height: 320px;" data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2">
+                                <ul class="feeds">
+                                {{#each data_trend}}
+                                    <li>
+                                        <a href="{{url}}/posts/section/trend/all_responses/{{_id}}">
+                                        <div class="col1">
+                                            <div class="cont">
+                                                <div class="cont-col1">
+                                                    <div class="label label-sm">
+
+                                                    {{#if pics}}
+                                                        <img class="icon_size" src="{{../url}}/{{category_icon}}">
+                                                        {{else}}
+                                                        <img class="icon_size" src="{{../url}}/images/trending.png">
+                                                    {{/if}}
+                                                        
+                                                    </div>
+                                                </div>
+                                                <div class="cont-col2">
+                                                    <div class="desc"> {{{brief}}} ...(more) </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col2">
+                                            <div class="date" style="text-transform: capitalize;"> - {{category}} </div>
+                                        </div>
+                                        </a>
+                                    </li>
+                                    {{/each}}
+                                                                                                 
+
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!--END TABS-->
+                </div>
+            </div>
+            <!-- END PORTLET -->
+        </div>
+
+        <div class="row">
+            <!-- BEGIN PORTLET -->
+            <div class="portlet light  tasks-widget">
+                <div class="portlet-title">
+                    <div class="caption caption-md">
+                        <i class="icon-bar-chart theme-font hide"></i>
+                        <span class="caption-subject font-blue-madison bold uppercase">Check Blazeet's Experts</span>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="task-content">
+                        <div class="scroller" style="height: 282px;" data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2">
+                            <!-- START TASK LIST -->
+                            <ul class="task-list">
+                            {{#each data_experts}}
+                                <li>
+                                    <div class="task-checkbox">
+                                        <input type="hidden" value="1" name="test" />
+                                        <input type="checkbox" class="liChild" name="test" /> </div>
+                                        <div class="task-title">
+                                        <a target="_blank" href="{{url}}/profile/{{_id}}">
+                                            <span class="task-title-sp"> {{displayName}} </span></a>
+                                            <span class="label label-sm label-success">Follow</span>
+
+                                        </div>
+
+                                    </li>
+                            {{/each}}
+
+                                            </ul>
+                                            <!-- END START TASK LIST -->
+                                        </div>
+                                    </div>
+                                    <div class="task-footer">
+                                        <div class="btn-arrow-link pull-right">
+                                            <a href="javascript:;">See All Experts</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="portlet light  tasks-widget">
+                                <div class="portlet-title">
+                                    <div class="caption caption-md">
+                                        <i class="icon-bar-chart theme-font hide"></i>
+                                        <span class="caption-subject font-blue-madison bold uppercase">Adverts</span>
+                                    </div>
+                                </div>
+                                <div class="portlet-body">
+                                    <div class="task-content">
+                                        <div class="scroller" style="height: 282px;" data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END PORTLET -->
+                        </div>
+
+                                    </div>  
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END PAGE CONTENT INNER -->
+                    </div>
+                </div>
+                <!-- END PAGE CONTENT BODY -->
+                <!-- END CONTENT BODY -->
+            </div>
+
+            <!-- START MODAL PORTLET-->
+
+            
+
+        
+
+            <!-- END MODAL PORTLET-->
+            <!-- END CONTENT -->
+            <!-- BEGIN QUICK SIDEBAR -->
+            <a href="javascript:;" class="page-quick-sidebar-toggler">
+                <i class="icon-login"></i>
+            </a>
+
+            <!-- END QUICK SIDEBAR -->
+        </div>
+        <!-- END CONTAINER -->
+        {{>footer_cms}}
+
+        <script src="{{url}}/js/handlebars.js" type="text/javascript"></script>
+        <script type="text/x-handlebars-template" id="the_dashboard_posts">
+            {{>posts_dashboard}}
+        </script>
+
+        <script type="text/javascript">
+        //socket connection
+            var socket = io.connect('http://' + location.host);
+          </script>
+
+        <script type="text/javascript">
+        var count=2;
+        $(window).scroll(function(){
+            if($(window).scrollTop()==$(document).height() - $(window).height()){
+                getajax(count);
+                count+=2;
+            }
+        });
+
+        function getajax(count){
+
+            event.preventDefault();
+            var my_url="{{url}}/loadPosts/"+count;
+            console.log(my_url)
+
+                $.ajax({
+                    url:my_url,
+                    method:'GET',
+                }).done(function(results){
+                    console.log(results);
+                    if(results.data.length >0){
+                        console.log(results.data);
+                        getDisplayedData(results.data);
+                    }
+                    
+
+                });
+        }
+
+        function getDisplayedData(data){
+            var load_data={myposts:data};
+            console.log(load_data)
+            console.log('getDISPLAY CALLED')
+            //console.log(data)
+            var theScriptHtml = $("#the_dashboard_posts").html();
+            console.log(theScriptHtml)
+            var theTemplate = Handlebars.compile(theScriptHtml);
+            var contextObj = theTemplate(load_data);
+            console.log('CONTEXTOBJ '+contextObj);
+            $(".question_all_post_area").append(contextObj);
+        }
+
+        
+            $( document ).ready( function () {
+
+
+            });
+
+        </script>
+
+
+    </body>
+
+</html>

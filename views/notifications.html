@@ -1,0 +1,229 @@
+{{>header_member}}
+
+<!-- BEGIN CONTAINER -->
+        <div class="page-container">
+            <!-- BEGIN CONTENT -->
+            <div class="page-content-wrapper">
+                <!-- BEGIN CONTENT BODY -->
+                <!-- BEGIN PAGE HEAD-->
+                <div class="page-head">  </div>
+                <!-- END PAGE HEAD-->
+                <!-- BEGIN PAGE CONTENT BODY -->
+                <div class="page-content">
+                    <div class="container">
+
+                        <!-- BEGIN PAGE CONTENT INNER -->
+                        <div class="page-content-inner">                            
+                            <!-- BEGIN MODALS FOR EDIT-->
+
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="col-md-3">
+                                        <!-- BEGIN PROFILE SIDEBAR -->
+                                        <div class="profile-sidebar">
+                                            
+                                            <!-- <div class="portlet light ">                                    
+                                                <div>
+                                                    <h3 class="profile-desc-title">Advert</h3>
+                                                </div>
+                                            </div> -->
+                                            <!-- END PORTLET MAIN -->
+                                        </div>
+                                        <!-- END BEGIN PROFILE SIDEBAR -->
+                                    </div>
+
+        <div class="col-md-6">                                        
+            <!-- BEGIN PORTLET -->
+
+             <div class="panel panel-default portlet" {{#unless page_response}} style="display: none;"{{/unless}}>
+              <div class="panel-body" style="width: 100%;">
+                <div class="posts_top_actions_left">
+                    <span class="posts_page_title">{{page_title}}</span>
+                </div>
+                
+                <div class="posts_top_actions_right">
+                    <a class="page_top_actions" onclick="modalLoader('question','new','');">Ask a question</a>&nbsp;|&nbsp;
+
+                    <a class="page_top_actions" onclick="modalLoader('article','new','');">Write an article</a>&nbsp;|&nbsp;
+
+                    <a class="page_top_actions" onclick="modalLoader('riddle','new','');">Post a riddle</a>&nbsp;|&nbsp;
+
+                    <a class="page_top_actions" onclick="modalLoader('pab','new','');">Post a book</a>
+                   
+                </div>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+
+            
+            <div class="question_all_post_area friend_req_page">
+
+            
+
+             <div class="portlet light posted">
+             <input type="hidden" id="post_id" value="">
+             <input type="hidden" id="post_type" value="">
+
+                {{#each data}}
+                    <div class="portlet-body" style="padding-top: 0px;">
+                    <input type="hidden" id="post_notif_id" value="{{_id}}">
+                        <div class="" data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2">
+                            <div class="general-item-list">
+                                <div class="item">
+                                    <div class="item-head">
+
+                                    <div style="width: 100%;"><!--main block-->
+                                        <div class="posts_partition_friends"><!--1st partition-->
+                                            <div style="width: 100%;">
+                                                <div class="section_posts_avatar">
+                                                   <img class="icon_size_50 img-circle" src="{{../url}}/{{section_pic}}">
+                                                </div>
+                                                <div class="section_posts_text">
+                                                    
+                                                    
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </div>
+
+                                        </div>
+
+                                         <div class="posts_partition_friends_middle"><!--2nd partition-->
+                                            <span>
+                                                {{msg}}
+                                                            
+                                            </span>
+                                        </div>
+                                         <div class="posts_partition_friends_middle"><!--3rd partition-->
+                                            <div class="pull-right">
+                                                 <div class="fromnow">{{moment date_created "fromNow"}}</div>
+                                                    <div class="clearfix"></div>
+
+                                                    <div style="margin-right: 5%;cursor: pointer;color: #86be25;" class="click_notification btn btn-outline sbold">
+                                                        VIEW
+                                                    </div>
+                                                    
+                                                
+                                            </div><!--end float right-->
+                                            <div class="clearfix"></div>
+                                        </div>
+
+                                    <div class="clearfix"></div>
+                                    </div>                                      
+                                        
+
+                                    </div>
+                                    
+
+                                        
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END PORTLET -->
+                   
+                    
+
+                </div>
+            {{/each}}
+            </div>
+
+
+        </div>
+
+                                    <div class="col-md-3"><!--third-->
+                                        <div class="row">
+                                            </div>
+                                            <!-- END PORTLET -->
+                                        </div>
+
+                                        <div class="row">
+
+                                        </div>
+
+                                    </div>  
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END PAGE CONTENT INNER -->
+                    </div>
+                </div>
+                <!-- END PAGE CONTENT BODY -->
+                <!-- END CONTENT BODY -->
+            </div>
+
+            <!-- START MODAL PORTLET-->
+
+            <div class="portlet-body form">                                         
+
+
+            </div>
+
+               
+            </div>
+
+
+            <!-- END MODAL PORTLET-->
+            <!-- END CONTENT -->
+            <!-- BEGIN QUICK SIDEBAR -->
+            <a href="javascript:;" class="page-quick-sidebar-toggler">
+                <i class="icon-login"></i>
+            </a>
+
+            <!-- END QUICK SIDEBAR -->
+        </div>
+        <!-- END CONTAINER -->
+        {{>footer_cms}}
+
+        <script type="text/javascript">
+
+            $( document ).ready( function () {
+
+                //accept friend request
+                $("body").on('click','.click_notification',function(e){
+                //get this posts owner
+                var $this=$(this);
+                var parent=$this.parents('.portlet-body');
+                var notif_id=parent.find('input#post_notif_id').val();
+                //console.log('notif_id '+(notif_id));
+                //send request
+                var url="{{url}}/notifications/updateNotificationStatus";
+                //console.log(url);
+
+                $.ajax({
+                    url:url,
+                    type:'GET',
+                    data:{'notif_id':notif_id},
+                    headers: {'X-My-App-Token': 'loganstyles'},
+                    success:function(response){
+                        //console.log(response);
+                        
+                        if(response.success==true){
+                            //console.log(response.msg);
+                            window.open(response.dest_url);                 
+
+                        }else{ 
+                            alert(response.msg);
+                         }  
+                        },
+                        error:function(xhr, status, err){
+                            console.log('error');
+                            console.log(xhr);
+                            console.log(status);
+                            console.log(err);
+                        }
+                    });
+
+            });
+
+
+            });
+
+            </script>
+
+
+    </body>
+
+</html>
