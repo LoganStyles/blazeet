@@ -1097,6 +1097,130 @@ sort them by date_created
 
     });
 
+    /*process an 'ask a riddle' post,save & update UI immediately*/
+app.post('/ask_riddle', upload.single('riddle_photo'), function (req, res, next) {
+    // console.log('req.fil')
+    console.log(req.file)
+
+    if ((req.user.displayPic).length === 0 || req.user.displayName == "User" || req.user.displayName == "") {
+        console.log("user has not updated profile")
+        res.json({
+            success: false,
+            msg: "Your post failed, please update your profile first"
+        });
+    } else {
+        var displayPic = (req.user.displayPic) ? (req.user.displayPic[req.user.displayPic.length - 1]) : ('uploads/avatar.png');
+        var status = (req.user.designation[0]) ? ((req.user.designation[req.user.designation.length - 1]).title) : ('');
+        var display_name = (req.user.displayName) ? (req.user.displayName) : ('');
+        var res_id = (req.user._id) ? ((req.user._id).toString()) : ('');
+
+        var owner_details = {
+            id: res_id,
+            displayName: display_name,
+            displayPic: displayPic,
+            status: status
+        };
+
+        let ask_riddle = new riddle();
+        ask_riddle.post_type = "riddle";
+        ask_riddle.access = 1; //default :public access
+        ask_riddle.body = (req.body.riddle_title);
+        ask_riddle.category = req.body.riddle_category;
+        ask_riddle.sub_cat1 = req.body.riddle_sub1;
+        ask_riddle.sub_cat2 = req.body.riddle_sub2;
+        ask_riddle.owner = owner_details;
+        ask_riddle.shared_body = striptags(req.body.riddle_title);
+        ask_riddle.shared_description = striptags(req.body.riddle_title);
+
+        if (req.file && req.file.filename != null) {
+            ask_riddle.pics.push('uploads/' + req.file.filename);
+        }
+
+        ask_riddle.save(function (err1, saved_ridd) {
+
+            if (err1) {
+                console.log(err1);
+                res.json({
+                    success: false,
+                    msg: "Riddle submission failed"
+                });
+
+            } else {
+
+                //send notification
+                var notifiers = req.user.friends;
+                var notif_type = "new_post";
+                var section_name = "riddle";
+                var section_id = saved_ridd._id;
+                var section_resp_id = "";
+                var section_pic = req.user.displayPic[0];
+                var url = process.env.URL_ROOT + "/posts/section/" + section_name + "/all_responses/" + saved_ridd._id;
+                var msg = req.user.displayName + " posted a " + section_name;
+                var curr_user_id = req.user._id;
+
+                process_notifs.saveNotifs(notifiers, notif_type, section_id, section_name, section_resp_id, section_pic, url, msg, curr_user_id, function (items_notifs) {
+
+                    if (items_notifs) {
+                        //update user's riddle_ids
+                        user.findOne({
+                            _id: req.user._id
+                        }, function (uerr, udata) {
+                            if (udata) {
+
+                                let updateUser = udata;
+                                updateUser.riddle_ids.push(saved_ridd._id);
+                                updateUser.riddle_ids = updateUser.riddle_ids.filter(onlyUnique); //remove duplicate entries
+
+                                user.updateOne({
+                                    _id: req.user._id
+                                }, {
+                                    $set: updateUser
+                                }, function (err2, res2) {
+
+                                    if (err2) {
+                                        console.log("Unable to update user's riddles")
+                                    } else if (res2) {
+                                        var page_results = [];
+                                        //console.log(saved_ridd);
+                                        page_results.push(saved_ridd);
+
+                                        process_posts.processPagePosts(page_results, req.user, function (processed_response) {
+                                            //console.log('JSON PROCESSED RESPONSE');
+                                            //console.log(processed_response);
+                                            var json = JSON.stringify(processed_response[0], null, 2);
+
+                                            console.log('emitting riddles...')
+                                            io.emit('new_riddles', json);
+                                            res.json({
+                                                success: true,
+                                                msg: "Riddle submission succesful"
+                                            });
+
+                                        });
+                                    }
+
+                                });
+
+                            } else {
+                                res.json({
+                                    success: false,
+                                    msg: "user profile not found"
+                                });
+                            }
+
+                        });
+                    }
+
+                });
+
+            }
+        });
+
+    }
+
+});
+
+
     /*process a request post,save*/
     var request_upload = upload.fields([
         // {name: 'request_attachment',maxCount:1 },
